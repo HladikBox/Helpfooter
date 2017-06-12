@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="content-language" content="zh-CN" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="Keywords" content="{{$setting.keywords}}" />
+    <meta name="Description" content="{{$setting.description}}" />
+    <meta name="author" content="{{$setting.author}}" />
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title> {{$setting.name}}-{{$page.title}} </title>
+    <link href="{{$uploadpath}}setting/{{$setting.fav}}" rel="shortcut icon">
+    <script>
+        var STATIC_URL = "/static/";
+        var GLOBAL_URL = "/";
+        var UPLOAD_URL = "{{$uploadpath}}";
+        var SITE_URL = "/";
+    </script>
+    <link rel="stylesheet" href="/static/web/css/reset.css?v=v3" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="/static/web/css/style.css?v=v3" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="/static/web/css/mobile.css?v=v3" type="text/css" media="screen" charset="utf-8">
+    <script src="/static/js/jquery-1.11.3.min.js?v=v3" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/js/jquery.easing.1.3.js?v=v3" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/js/jquery.transit.js?v=v3" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/js/html5.min.js?v=v3" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/js/bocfe.js?v=v3" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/js/plug.preload.js?v=v3" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/web/js/smooth.js?v=v3" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/web/js/jquery.mousewheel.js?v=v3" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/js/share.js?v=v3" type="text/javascript" charset="utf-8"></script><!--[if !IE]><!-->
+    <script src="/static/m/swiper/swiper-3.4.0.jquery.min.js?v=v3" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="/static/m/swiper/swiper.css?v=v3" type="text/css" media="screen" charset="utf-8"><!--<![endif]-->
+</head>
+
+<body>
+    <header>
+        <div class="header-main">
+            <div class="w1520 f-cb">
+                <a class="logo fl" href="/"><img src="{{$uploadpath}}setting/{{$setting.logo}}" alt=""></a>
+                <!--
+                <div class="fr extra-link">
+                    <a class="link1" href="http://www.bocweb.cn/rhythm.html"></a>
+                    <a class="link2" href="http://www.bocweb.cn/vr.html"></a>
+                    <a class="link3" href="http://www.bocweb.cn/news.html"></a>
+                    <a class="link4 search-ico" href="javascript:;"></a>
+                </div>
+                -->
+                <div class="fr nav-link">
+                    <div class="nav f-cb">
+                        <span class="fl extra-nav">{{$setting.slogan}}</span>
+                        <span class="fl line"></span>
+                        <ul class="fl">
+                            <li class="sub-li"><a href="/about">关于我们</a></li>
+                            <li class="sub-li"><a href="/interact">互动开发</a></li>
+                            <li class="sub-li"><a href="/service">智慧服务</a></li>
+                            <li class="sub-li"><a href="/news">新闻资讯</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="m-btn fr">
+                    <span class="box">
+                        <span class="line line1"></span>
+                        <span class="line line2"></span>
+                        <span class="line line3"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="m-sub-menu">
+        <div class="top-box f-cb">
+            <span class="fl stt">菜单</span>
+            <span class="fr close"></span>
+        </div>
+        <div class="list-wrap">
+            <ul>
+                <li>
+                    <span class="col-box f-cb">
+                        <span class="fl tit">关于我们</span>
+                        <span class="fr point"></span>
+                    </span>
+                </li>
+                <li>
+                    <span class="col-box f-cb">
+                        <span class="fl tit">互动开发</span>
+                        <span class="fr point"></span>
+                    </span>
+                </li>
+                <li>
+                    <span class="col-box f-cb">
+                        <span class="fl tit">智慧服务</span>
+                        <span class="fr point"></span>
+                    </span>
+                </li>
+                <li>
+                    <a class="col-box" href="/news"><span class="tit">新闻资讯</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="sec-sub-list">
+            <div class="boxs">
+                <span class="return-fir"><p>关于我们</p></span>
+                <ul>
+                    <li><a href="/about/intro">公司简介</a></li>
+                    <li><a href="/about/culture">企业文化</a></li>
+                    <li><a href="/about">发展历程</a></li>
+                    <li><a href="/about/team">团队介绍</a></li>
+                    <li><a href="/about/future">未来&amp;愿景</a></li>
+                </ul>
+            </div>
+            <div class="boxs">
+                <span class="return-fir"><p>互动开发</p></span>
+                <ul>
+                    <li><a href="/interact/website">网站开发</a></li>
+                    <li><a href="/interact/app">APP开发</a></li>
+                    <li><a href="/interact/platform">平台开发</a></li>
+                </ul>
+            </div>
+            <div class="boxs">
+                <span class="return-fir"><p>智慧服务</p></span>
+                <ul>
+                    <li><a href="/service/digital">数字营销</a></li>
+                    <li><a href="/service/ad">营销大数据</a></li>
+                    <li><a href="/service/light">数字全案</a></li>
+                    <li><a href="/service/society">社会化营销</a></li>
+                    <li><a href="/service/medium">媒介资源</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <div class="body-wrap">
