@@ -11,6 +11,19 @@ for ($i=0; $i < count($indexbanner); $i++) {
 $smarty->assign("indexbanner",$indexbanner);
 
 
+include ROOT.'/model/indexpage.php';
+$indexpageMgr=new IndexpageMgr($dbmgr);
+$page=$indexpageMgr->get(0);
+$page["title"]=$setting["slogan"];
+$smarty->assign("page",$page);
+
+
+
+include ROOT.'/model/product.php';
+$productMgr=new ProductMgr($dbmgr);
+$product=$productMgr->_list( array('status' =>'A',"is_index"=>"Y" )," order by seq limit 0,3");
+$smarty->assign("product",$product);
+
 
 $smarty->display(ROOT."/templates/index.html");
 

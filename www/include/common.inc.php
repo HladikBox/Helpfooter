@@ -33,6 +33,18 @@ $setting=$settingMgr->get(0);
 $smarty->assign("setting",$setting);
 
 
+include ROOT.'/model/productconfig.php';
+$productconfigMgr=new ProductconfigMgr($dbmgr);
+$productconfig=$productconfigMgr->get(0);
+if($productconfig["is_active"]=="Y"){
+	include ROOT.'/model/productcategory.php';
+	$productcategoryMgr=new ProductcategoryMgr($dbmgr);
+	$productcategory=$productcategoryMgr->_list(array("status"=>"A")," order by seq");
+	$productconfig["category"]=$productcategory;
+}
+$smarty->assign("productconfig",$productconfig);
+
+
 include ROOT.'/model/address.php';
 $addressMgr=new AddressMgr($dbmgr);
 $address=$addressMgr->_list( array('status' =>'A' )," order by seq");

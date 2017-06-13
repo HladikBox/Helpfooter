@@ -55,7 +55,9 @@
                         <span class="fl line"></span>
                         <ul class="fl">
                             <li class="sub-li"><a href="/about">关于我们</a></li>
-                            <li class="sub-li"><a href="/interact">互动开发</a></li>
+                            {{if $productconfig.is_active=="Y"}}
+                            <li class="sub-li"><a href="/product">{{$productconfig.name}}</a></li>
+                            {{/if}}
                             <li class="sub-li"><a href="/service">智慧服务</a></li>
                             <li class="sub-li"><a href="/news">新闻资讯</a></li>
                         </ul>
@@ -84,12 +86,14 @@
                         <span class="fr point"></span>
                     </span>
                 </li>
+                {{if $productconfig.is_active=="Y"}}
                 <li>
                     <span class="col-box f-cb">
-                        <span class="fl tit">互动开发</span>
+                        <span class="fl tit">{{$productconfig.name}}</span>
                         <span class="fr point"></span>
                     </span>
                 </li>
+                {{/if}}
                 <li>
                     <span class="col-box f-cb">
                         <span class="fl tit">智慧服务</span>
@@ -112,14 +116,16 @@
                     <li><a href="/about/future">未来&amp;愿景</a></li>
                 </ul>
             </div>
+            {{if $productconfig.is_active=="Y"}}
             <div class="boxs">
-                <span class="return-fir"><p>互动开发</p></span>
+                <span class="return-fir"><p>{{$productconfig.name}}</p></span>
                 <ul>
-                    <li><a href="/interact/website">网站开发</a></li>
-                    <li><a href="/interact/app">APP开发</a></li>
-                    <li><a href="/interact/platform">平台开发</a></li>
+                    {{foreach from=$productconfig.category item=rs}}
+                    <li><a href="/productcat/{{$rs.markcode}}">{{$rs.name}}</a></li>
+                    {{/foreach}}
                 </ul>
             </div>
+            {{/if}}
             <div class="boxs">
                 <span class="return-fir"><p>智慧服务</p></span>
                 <ul>
