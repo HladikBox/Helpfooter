@@ -93,7 +93,7 @@ $(function(){
 	
 	var src = $(".ins-ban .bgimg").attr("src");
 	var insbanimg = $(".ins-ban img.bgimg").attr("src");
-	console.log(insbanimg)
+	//console.log(insbanimg);
 	if (insbanimg != undefined || insbanimg != null) {
 		_PreLoadImg([
 			src

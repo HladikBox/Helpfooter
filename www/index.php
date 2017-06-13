@@ -25,6 +25,11 @@ $product=$productMgr->_list( array('status' =>'A',"is_index"=>"Y" )," order by s
 $smarty->assign("product",$product);
 
 
+include ROOT.'/model/news.php';
+$newsMgr=new newsMgr($dbmgr);
+$news=$newsMgr->_list( array('status' =>'A',"is_index"=>"Y" )," order by published_date desc limit 0,3");
+$smarty->assign("news",$news);
+
 $smarty->display(ROOT."/templates/index.html");
 
 ?>

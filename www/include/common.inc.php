@@ -33,6 +33,31 @@ $setting=$settingMgr->get(0);
 $smarty->assign("setting",$setting);
 
 
+
+include ROOT.'/model/aboutconfig.php';
+$aboutconfigMgr=new AboutconfigMgr($dbmgr);
+$aboutconfig=$aboutconfigMgr->get(0);
+$smarty->assign("aboutconfig",$aboutconfig);
+
+
+include ROOT.'/model/serviceconfig.php';
+$serviceconfigMgr=new ServiceconfigMgr($dbmgr);
+$serviceconfig=$serviceconfigMgr->get(0);
+$smarty->assign("serviceconfig",$serviceconfig);
+
+
+include ROOT.'/model/newsconfig.php';
+$newsconfigMgr=new NewsconfigMgr($dbmgr);
+$newsconfig=$newsconfigMgr->get(0);
+if($newsconfig["is_active"]=="Y"){
+	include ROOT.'/model/newscategory.php';
+	$newscategoryMgr=new NewscategoryMgr($dbmgr);
+	$newscategory=$newscategoryMgr->_list(array("status"=>"A")," order by seq");
+	$newsconfig["category"]=$newscategory;
+	$newsconfig["category_count"]=count($newscategory);
+}
+$smarty->assign("newsconfig",$newsconfig);
+
 include ROOT.'/model/productconfig.php';
 $productconfigMgr=new ProductconfigMgr($dbmgr);
 $productconfig=$productconfigMgr->get(0);
@@ -41,6 +66,7 @@ if($productconfig["is_active"]=="Y"){
 	$productcategoryMgr=new ProductcategoryMgr($dbmgr);
 	$productcategory=$productcategoryMgr->_list(array("status"=>"A")," order by seq");
 	$productconfig["category"]=$productcategory;
+	$productconfig["category_count"]=count($productcategory);
 }
 $smarty->assign("productconfig",$productconfig);
 

@@ -120,7 +120,7 @@ function scrollactive(){
 	if ($(window).scrollTop() > $(".i-sev-wrap").offset().top - $(window).height() + 200 && !$(".i-sev-wrap").hasClass('active')) {
 		$(".i-sev-wrap").addClass('active');
 	};
-	if ($(window).scrollTop() > $(".i-eig-wrap").offset().top - $(window).height() + 200 && !$(".i-eig-wrap").hasClass('active')) {
-		$(".i-eig-wrap").addClass('active');
-	};
+	//if ($(window).scrollTop() > $(".i-eig-wrap").offset().top - $(window).height() + 200 && !$(".i-eig-wrap").hasClass('active')) {
+	//	$(".i-eig-wrap").addClass('active');
+	//};
 }

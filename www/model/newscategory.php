@@ -1,11 +1,11 @@
 <?php
-class ProductcategoryMgr 
+class NewscategoryMgr 
 {
     public $dbmgr = null;
     public function __construct($dbmgr) {
       $this->dbmgr=$dbmgr;  
     }
-//获取产品分类列表，传入对应的搜索条件
+//获取新闻分类列表，传入对应的搜索条件
 public function _list($search_param,$orderby){
 
     $sql_where="";
@@ -14,6 +14,10 @@ public function _list($search_param,$orderby){
     if(isset($search_param["seq"]))
     {
         $sql_where.=" and r_main.seq='".$search_param["seq"]."'";
+    }
+    if(isset($search_param["markcode"]))
+    {
+        $sql_where.=" and r_main.markcode like '%".$search_param["markcode"]."%'";
     }
     if(isset($search_param["name"]))
     {
@@ -31,7 +35,7 @@ public function _list($search_param,$orderby){
     {
         $sql_where.=" and r_main.status='".$search_param["status"]."'";
     }
-    $sql="select  r_main.id  ,r_main.seq ,r_main.name,r_main.markcode ,r_main.icon,r_main.summary ,r_main.content ,r_main.status  from  tb_productcategory r_main  where 1=1 $sql_where  and r_main.status<>'D' 
+    $sql="select  r_main.id  ,r_main.seq ,r_main.markcode ,r_main.name ,r_main.summary ,r_main.content ,r_main.status  from  tb_newscategory r_main  where 1=1 $sql_where  and r_main.status<>'D' 
     $orderby";
                 $query = $this->dbmgr->query($sql);
                 $result = $this->dbmgr->fetch_array_all($query);

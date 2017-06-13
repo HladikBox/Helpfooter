@@ -50,11 +50,8 @@
                 <div class="fr right-wrap">
                     <div class="about-recom">
                         <div class="cont">
-                            <p class="stit">{{$page.about_name}}</p>
-                            <span class="font"> <p>{{$page.about_summary}}</p> </span>
-                            {{if $page.about_email!=""}}
-                            <a class="email" href="mailto:{{$page.about_email}}"><span class="bg"></span><i></i></a>
-                            {{/if}}
+                            <p class="stit">{{$aboutconfig.title}}</p>
+                            <span class="font"> <p>{{$aboutconfig.summary}}</p> </span>
                             <a class="bot-link f-cb" href="/about" target="_blank">
                                 <span class="fl">About us</span>
                                 <span class="fr point"></span>
@@ -62,7 +59,7 @@
                         </div>
                     </div>
                     <a class="img-box" href="/about">
-                        <img src="{{$uploadpath}}indexpage/{{$page.about_pic}}" alt="">
+                        <img src="{{$uploadpath}}serviceconfig/{{$serviceconfig.image}}" alt="{{$serviceconfig.name}}">
                         <div class="up-graybox">
                             <span class="bgbox"></span>
                             <p class="stit">
@@ -76,9 +73,9 @@
                 </div>
                 <div class="fl left-wrap">
                     <div class="cent-cont i-column-wrap black">
-                        <p class="stit"><a href="/service">{{$page.service_name}}</a></p>
+                        <p class="stit"><a href="/service">{{$serviceconfig.name}}</a></p>
                         <span class="line"></span>
-                        <p><span class="mtit"><a>{{$page.service_title}}</a></span> <span class="font"><a>{{$page.service_summary}}</a></span></p>						<a class="link" href="/service"><span class="bg"></span><i></i></a>
+                        <p><span class="mtit"><a>{{$serviceconfig.title}}</a></span> <span class="font"><a>{{$serviceconfig.summary}}</a></span></p>						<a class="link" href="/service"><span class="bg"></span><i></i></a>
                     </div>
                     <div class="num-box">
                         <span class="num">
@@ -107,21 +104,24 @@
                     <p class="mtit"><a>{{$page.ad_title}}</a></p><p><span class="font">{{$page.ad1_summary}}</span></p>					<a class="link" href="{{$page.ad1_link}}"><span class="bg"></span><i></i></a>
                 </div>
             </div>
+            {{if $productconfig.is_active=="Y"}}
             <div class="i-thi-wrap i-wrap mginb-16">
                 <div class="main-wrap">
                     <div class="tit-box">
                         <h4>{{$productconfig.name}}</h4>
                         <p class="intr">{{$productconfig.title}}</p>
                     </div>
+                    {{if $productconfig.category_count>1}}
                     <div class="nav-box f-cb">
                         <div class="fl left-link">
                             <span class="all">ALL</span>
                             {{foreach from=$productconfig.category item=rs}}
-                            <a class="type-link" style="background: url('{{$uploadpath}}productcategory/$rs.icon')" href="/product/{{$rs.markcode}}" target="_blank">{{$rs.name}}</a>
+                            <a class="type-link"  href="/product/{{$rs.markcode}}" target="_blank">{{$rs.name}}</a>
                             {{/foreach}}
                         </div>
                         <a class="fr more" href="/product" target="_blank">Read more</a>
                     </div>
+                    {{/if}}
                     <div class="list-wrap">
                         <div class="pc-scroll">
                             <ul>
@@ -141,7 +141,7 @@
                                         </div>
                                     </a>
                                     <div class="cont-wrap">
-                                        <p class="tit"><a href="/product/{{$rs.id}}">{{$rs.name}}"</a></p>
+                                        <p class="tit"><a href="/product/{{$rs.id}}">{{$rs.name}}</a></p>
                                         <span class="intr">
                                             {{$productconfig.name}} /	{{$rs.category_id_name}}
                                         </span>
@@ -180,10 +180,11 @@
                     </div>
                 </div>
             </div>
+            {{/if}}
             <div class="i-fou-wrap i-wrap f-cb mginb-16">
-                <a class="fr img-box" href="http://www.bocweb.cn/digital/figure.html ">
+                <a class="fr img-box" href="{{$page.ad2_link}}">
 
-                    <img src="http://www.bocweb.cn/upload/2017/01/13/14842742942809rg3xb.jpg" alt="数字全案">
+                    <img src="{{$uploadpath}}indexpage/{{$page.ad2_pic}}" alt="{{$page.ad2_name}}">
 
                     <div class="up-graybox">
                         <span class="bgbox"></span>
@@ -196,17 +197,17 @@
                     </div>
                 </a>
                 <div class="fl cont-wrap i-column-wrap white">
-                    <p class="stit"><a href="http://www.bocweb.cn/digital/figure.html ">数字全案</a></p>
+                    <p class="stit"><a href="{{$page.ad2_link}}">{{$page.ad2_name}}</a></p>
                     <span class="line"></span>
-                    <p class="mtit"><a>“轻营销”助力线上转型 迅速达成效果转化</a></p><p><span class="font">博采网络全案数字营销服务，独创“轻营销”理念，利用自身全网资源、大数据精准营销、创意策略等...</span></p>					<a class="link" href="http://www.bocweb.cn/digital/figure.html "><span class="bg"></span><i></i></a>
+                    <p class="mtit"><a>{{$page.ad2_title}}</a></p><p><span class="font">{{$page.ad2_summary}}</span></p>					<a class="link" href="{{$page.ad2_link}}"><span class="bg"></span><i></i></a>
                 </div>
             </div>
             <div class="i-fiv-wrap i-wrap mginb-16">
                 <ul>
                     <li>
-                        <a class="img" href="javascript:;">
+                        <a class="img" href="{{$page.ad3_link}}">
                             <img class="bgimg" width="100%" src="/static/web/img/bg_01.png?v=v3" alt="">
-                            <img class="up-pic" src="http://www.bocweb.cn/upload/2017/01/18/148472885833824aqsq.jpg" alt="数据开发">
+                            <img class="up-pic" src="{{$uploadpath}}indexpage/{{$page.ad3_pic}}" alt="{{$page.ad3_name}}">
                             <!-- <video class="up-pic video-lab" id="hudong-video" loop="" muted="muted" src="/static/m/video/互动开发_clip.mp4?v=v3"></video> -->
                             <div class="up-graybox">
                                 <span class="bgbox"></span>
@@ -220,24 +221,23 @@
                         </a>
                         <div class="cont-wrap">
                             <div class="cont">
-                                <p class="tit"><a href="javascript:;">数据开发</a></p>
+                                <p class="tit"><a href="{{$page.ad3_link}}">{{$page.ad3_name}}</a></p>
                                 <span class="intr">
-                                    <a href="javascript:;"> <p>卓越的交互体验 为更广阔的移动营销而生</p> </a>
+                                    <a href="javascript:;"> <p>{{$page.ad3_title}}</p> </a>
                                 </span>
                                 <div class="bot-link f-cb">
                                     <div class="fl link">
-                                        <div class="li"><i></i><a href="javascript:;">有商</a></div>
-                                        <div class="li"><i></i><a href="javascript:;">云客</a></div>
+                                        {{$page.ad3_summary}}
                                     </div>
-                                    <a class="fr point" href="javascript:;"></a>
+                                    <a class="fr point" href="{{$page.ad3_link}}"></a>
                                 </div>
                             </div>
                         </div>
                     </li>
                     <li>
-                        <a class="img" href="http://www.bocweb.cn/digital/wechat.html">
+                        <a class="img" href="{{$page.ad4_link}}">
                             <img class="bgimg" width="100%" src="/static/web/img/bg_01.png?v=v3" alt="">
-                            <img class="up-pic" src="http://www.bocweb.cn/upload/2017/01/13/14842744491947acqoj.jpg" alt="H5">
+                            <img class="up-pic" src="{{$uploadpath}}indexpage/{{$page.ad4_pic}}" alt="{{$page.ad4_name}}">
 
                             <div class="up-graybox">
                                 <span class="bgbox"></span>
@@ -251,17 +251,15 @@
                         </a>
                         <div class="cont-wrap">
                             <div class="cont">
-                                <p class="tit"><a href="http://www.bocweb.cn/digital/wechat.html ">H5</a></p>
+                                <p class="tit"><a href="{{$page.ad4_link}}">{{$page.ad4_name}}</a></p>
                                 <span class="intr">
-                                    <a href="http://www.bocweb.cn/digital/wechat.html "> <p>通过精准的内容传达 促成与消费者的有效沟通</p> </a>
+                                    <a href="{{$page.ad4_link}}"> <p>{{$page.ad4_title}}</p> </a>
                                 </span>
                                 <div class="bot-link f-cb">
                                     <div class="fl link">
-                                        <div class="li"><i></i><a href="http://www.bocweb.cn/digital/wechat/1.html ">地产</a></div>
-                                        <div class="li"><i></i><a href="http://www.bocweb.cn/digital/wechat/2.html ">家电</a></div>
-                                        <div class="li"><i></i><a href="http://www.bocweb.cn/digital/wechat/3.html ">金融</a></div>
+                                        {{$page.ad4_summary}}
                                     </div>
-                                    <a class="fr point" href="http://www.bocweb.cn/digital/wechat.html "></a>
+                                    <a class="fr point" href="{{$page.ad4_link}}"></a>
                                 </div>
                             </div>
                         </div>
@@ -269,8 +267,8 @@
                 </ul>
             </div>
             <div class="i-sex-wrap i-wrap f-cb mginb-16">
-                <a class="fl img-box" href="http://www.bocweb.cn/digital/society.html ">
-                    <img src="http://www.bocweb.cn/upload/2017/01/09/1483948341148qcr53.jpg" alt="社会化营销">
+                <a class="fl img-box" href="{{$page.ad5_link}}">
+                    <img src="{{$uploadpath}}indexpage/{{$page.ad5_pic}}" alt="{{$page.ad5_name}}">
 
                     <div class="up-graybox">
                         <span class="bgbox"></span>
@@ -283,138 +281,73 @@
                     </div>
                 </a>
                 <div class="fr cont-wrap i-column-wrap white">
-                    <p class="stit"><a href="http://www.bocweb.cn/digital/society.html ">社会化营销</a></p>
+                    <p class="stit"><a href="{{$page.ad5_link}}">{{$page.ad5_name}}</a></p>
                     <span class="line"></span>
-                    <p class="mtit"><a>缔造人人参与的营销态势</a></p><p><span class="font">博采网络社会化营销服务，利用创意事件。数字信息、网络媒体，帮助企业实现，具有影响力的线上、线下社会化营销战略。</span></p>					<a class="link" href="http://www.bocweb.cn/digital/society.html "><span class="bg"></span><i></i></a>
+                    <p class="mtit"><a>{{$page.ad5_title}}</a></p><p><span class="font">{{$page.ad5_summary}}</span></p>					<a class="link" href="{{$page.ad5_link}}"><span class="bg"></span><i></i></a>
                 </div>
             </div>
+            {{if $newsconfig.is_active=="Y"}}
             <div class="i-sev-wrap i-wrap">
                 <div class="main-wrap">
                     <div class="top-titbox f-cb">
                         <div class="fl">
-                            <h4>新闻动态</h4>
+                            <h4>{{$newsconfig.name}}</h4>
                             <span class="line"></span>
-                            <span class="font">让价值共享 记录企业发展脚步</span>
+                            <span class="font">{{$newsconfig.summary}}</span>
                         </div>
-                        <a class="fr more" href="http://www.bocweb.cn/news.html" target="_blank">Read more</a>
+                        <a class="fr more" href="/news" target="_blank">Read more</a>
                     </div>
                     <div class="list-wrap news-recommend-list pc-scroll fadeIntop">
                         <ul>
-
+                            {{foreach from=$news item=rs}}
                             <li>
-                                <a class="img" href="http://www.bocweb.cn/news/info/16.html" target="_blank">
+                                <a class="img" href="/news/{{$rs.id}}" target="_blank">
                                     <img class="bgimg" src="/static/web/img/bg_03.png?v=v3" alt="">
-                                    <img class="up-pic" src="http://www.bocweb.cn/upload/2017/05/19/14951914463771pvu36.jpg" alt="博采荣获国际 CSS Design Awards 最佳S.Kudos奖">
+                                    <img class="up-pic" src="{{$uploadpath}}news/{{$rs.thumbnail}}" alt="{{$rs.title}}">
                                     <span class="up-gray"></span>
                                 </a>
                                 <div class="cont-wrap">
                                     <div class="cont">
-                                        <p class="tit"><a href="http://www.bocweb.cn/news/info/16.html" target="_blank">博采荣获国际 CSS Design Awards 最佳S.Kudos奖</a></p>
-                                        <span class="word"><a href="http://www.bocweb.cn/news/info/16.html" target="_blank">CSSDA-SPECIAL-KUDOS！博采新版官网荣获国际知名设计平台CSS De…</a></span>
-                                        <a class="bot-link f-cb" href="http://www.bocweb.cn/news/info/16.html" target="_blank">
+                                        <p class="tit"><a href="/news/{{$rs.id}}" target="_blank">{{$rs.title}}</a></p>
+                                        <span class="word"><a href="/news/{{$rs.id}}" target="_blank">{{$rs.summary}}</a></span>
+                                        <a class="bot-link f-cb" href="/news/{{$rs.id}}" target="_blank">
                                             <span class="fl more">Read more</span>
                                             <span class="fr link-point"></span>
                                         </a>
                                     </div>
                                 </div>
                             </li>
-                            <li>
-                                <a class="img" href="http://www.bocweb.cn/news/info/7.html" target="_blank">
-                                    <img class="bgimg" src="/static/web/img/bg_03.png?v=v3" alt="">
-                                    <img class="up-pic" src="http://www.bocweb.cn/upload/2017/01/19/14847940141093hmpda.jpg" alt="签约五粮醇酒业全年数字营销运营服务">
-                                    <span class="up-gray"></span>
-                                </a>
-                                <div class="cont-wrap">
-                                    <div class="cont">
-                                        <p class="tit"><a href="http://www.bocweb.cn/news/info/7.html" target="_blank">签约五粮醇酒业全年数字营销运营服务</a></p>
-                                        <span class="word"><a href="http://www.bocweb.cn/news/info/7.html" target="_blank">   四川省宜宾五粮液集团有限公司，坐落于万里长江第一城——中国白酒之都宜宾。前身是…</a></span>
-                                        <a class="bot-link f-cb" href="http://www.bocweb.cn/news/info/7.html" target="_blank">
-                                            <span class="fl more">Read more</span>
-                                            <span class="fr link-point"></span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <a class="img" href="http://www.bocweb.cn/news/info/6.html" target="_blank">
-                                    <img class="bgimg" src="/static/web/img/bg_03.png?v=v3" alt="">
-                                    <img class="up-pic" src="http://www.bocweb.cn/upload/2017/02/27/14881746476775epdkf.jpg" alt="签约财通证券网络全案营销策划">
-                                    <span class="up-gray"></span>
-                                </a>
-                                <div class="cont-wrap">
-                                    <div class="cont">
-                                        <p class="tit"><a href="http://www.bocweb.cn/news/info/6.html" target="_blank">签约财通证券网络全案营销策划</a></p>
-                                        <span class="word"><a href="http://www.bocweb.cn/news/info/6.html" target="_blank">   财通证券股份有限公司（以下简称“公司”）前身是成立于1993年5月的浙江财政证券公…</a></span>
-                                        <a class="bot-link f-cb" href="http://www.bocweb.cn/news/info/6.html" target="_blank">
-                                            <span class="fl more">Read more</span>
-                                            <span class="fr link-point"></span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-
-
+                            {{/foreach}}
                         </ul>
                     </div>
                     <div class="list-wrap news-recommend-list m-scroll">
                         <ul class="swiper-wrapper">
-
+                            {{foreach from=$news item=rs}}
                             <li class="swiper-slide">
-                                <a class="img" href="http://www.bocweb.cn/news/info/16.html">
+                                <a class="img" href="/news/{{$rs.id}}">
                                     <img class="bgimg" src="/static/web/img/bg_03.png?v=v3" alt="">
-                                    <img class="up-pic" src="http://www.bocweb.cn/upload/2017/05/19/14951914463771pvu36.jpg" alt="博采荣获国际 CSS Design Awards 最佳S.Kudos奖">
+                                    <img class="up-pic" src="{{$uploadpath}}news/{{$rs.thumbnail}}" alt="{{$rs.title}}">
                                     <span class="up-gray"></span>
                                 </a>
                                 <div class="cont-wrap">
                                     <div class="cont">
-                                        <p class="tit"><a href="http://www.bocweb.cn/news/info/16.html">博采荣获国际 CSS Design Awards 最佳S.Kudos奖</a></p>
-                                        <span class="word"><a href="http://www.bocweb.cn/news/info/16.html">CSSDA-SPECIAL-KUDOS！博采新版官网荣获国际知名设计平台CSS De…</a></span>
-                                        <a class="bot-link f-cb" href="http://www.bocweb.cn/news/info/16.html">
+                                        <p class="tit"><a href="/news/{{$rs.id}}">{{$rs.title}}</a></p>
+                                        <span class="word"><a href="/news/{{$rs.id}}">{{$rs.summary}}</a></span>
+                                        <a class="bot-link f-cb" href="/news/{{$rs.id}}">
                                             <span class="fl more">Read more</span>
                                             <span class="fr link-point"></span>
                                         </a>
                                     </div>
                                 </div>
                             </li>
-                            <li class="swiper-slide">
-                                <a class="img" href="http://www.bocweb.cn/news/info/7.html">
-                                    <img class="bgimg" src="/static/web/img/bg_03.png?v=v3" alt="">
-                                    <img class="up-pic" src="http://www.bocweb.cn/upload/2017/01/19/14847940141093hmpda.jpg" alt="签约五粮醇酒业全年数字营销运营服务">
-                                    <span class="up-gray"></span>
-                                </a>
-                                <div class="cont-wrap">
-                                    <div class="cont">
-                                        <p class="tit"><a href="http://www.bocweb.cn/news/info/7.html">签约五粮醇酒业全年数字营销运营服务</a></p>
-                                        <span class="word"><a href="http://www.bocweb.cn/news/info/7.html">   四川省宜宾五粮液集团有限公司，坐落于万里长江第一城——中国白酒之都宜宾。前身是…</a></span>
-                                        <a class="bot-link f-cb" href="http://www.bocweb.cn/news/info/7.html">
-                                            <span class="fl more">Read more</span>
-                                            <span class="fr link-point"></span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="swiper-slide">
-                                <a class="img" href="http://www.bocweb.cn/news/info/6.html">
-                                    <img class="bgimg" src="/static/web/img/bg_03.png?v=v3" alt="">
-                                    <img class="up-pic" src="http://www.bocweb.cn/upload/2017/02/27/14881746476775epdkf.jpg" alt="签约财通证券网络全案营销策划">
-                                    <span class="up-gray"></span>
-                                </a>
-                                <div class="cont-wrap">
-                                    <div class="cont">
-                                        <p class="tit"><a href="http://www.bocweb.cn/news/info/6.html">签约财通证券网络全案营销策划</a></p>
-                                        <span class="word"><a href="http://www.bocweb.cn/news/info/6.html">   财通证券股份有限公司（以下简称“公司”）前身是成立于1993年5月的浙江财政证券公…</a></span>
-                                        <a class="bot-link f-cb" href="http://www.bocweb.cn/news/info/6.html">
-                                            <span class="fl more">Read more</span>
-                                            <span class="fr link-point"></span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
+                            {{/foreach}}
                         </ul>
                         <div class="pagination"></div>
                     </div>
                 </div>
             </div>
+            {{/if}}
+            <!-- index.js也要改
             <div class="i-eig-wrap i-wrap">
                 <div class="main-wrap">
                     <div class="tit-box f-cb">
@@ -448,6 +381,7 @@
                     </div>
                 </div>
             </div>
+            -->
         </div>
 
 
