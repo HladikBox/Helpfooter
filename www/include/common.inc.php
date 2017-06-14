@@ -37,12 +37,22 @@ $smarty->assign("setting",$setting);
 include ROOT.'/model/aboutconfig.php';
 $aboutconfigMgr=new AboutconfigMgr($dbmgr);
 $aboutconfig=$aboutconfigMgr->get(0);
+	include ROOT.'/model/about.php';
+	$aboutMgr=new AboutMgr($dbmgr);
+	$about=$aboutMgr->_list(array("status"=>"A")," order by seq");
+	$aboutconfig["category"]=$about;
+	$aboutconfig["category_count"]=count($about);
 $smarty->assign("aboutconfig",$aboutconfig);
 
 
 include ROOT.'/model/serviceconfig.php';
 $serviceconfigMgr=new ServiceconfigMgr($dbmgr);
 $serviceconfig=$serviceconfigMgr->get(0);
+	include ROOT.'/model/service.php';
+	$serviceMgr=new ServiceMgr($dbmgr);
+	$service=$serviceMgr->_list(array("status"=>"A")," order by seq");
+	$serviceconfig["category"]=$service;
+	$serviceconfig["category_count"]=count($service);
 $smarty->assign("serviceconfig",$serviceconfig);
 
 

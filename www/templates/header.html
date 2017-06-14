@@ -82,10 +82,14 @@
         <div class="list-wrap">
             <ul>
                 <li>
+                    {{if $aboutconfig.category_count>0}}
                     <span class="col-box f-cb">
                         <span class="fl tit">{{$aboutconfig.name}}</span>
                         <span class="fr point"></span>
                     </span>
+                    {{else}}
+                    <a class="col-box" href="/about"><span class="tit">{{$aboutconfig.name}}</span></a>
+                    {{/if}}
                 </li>
                 {{if $productconfig.is_active=="Y"}}
                 {{if $productconfig.category_count>1}}
@@ -102,10 +106,14 @@
                 {{/if}}
                 {{/if}}
                 <li>
+                    {{if $aboutconfig.category_count>0}}
                     <span class="col-box f-cb">
                         <span class="fl tit">{{$serviceconfig.name}}</span>
                         <span class="fr point"></span>
                     </span>
+                    {{else}}
+                    <a class="col-box" href="/service"><span class="tit">{{$serviceconfig.name}}</span></a>
+                    {{/if}}
                 </li>
                 {{if $newsconfig.is_active=="Y"}}
                 {{if $newsconfig.category_count>1}}
@@ -127,11 +135,9 @@
             <div class="boxs">
                 <span class="return-fir"><p>{{$aboutconfig.name}}</p></span>
                 <ul>
-                    <li><a href="/about/intro">公司简介</a></li>
-                    <li><a href="/about/culture">企业文化</a></li>
-                    <li><a href="/about">发展历程</a></li>
-                    <li><a href="/about/team">团队介绍</a></li>
-                    <li><a href="/about/future">未来&amp;愿景</a></li>
+                    {{foreach from=$aboutconfig.category item=rs}}
+                    <li><a href="/about/{{$rs.markcode}}">{{$rs.name}}</a></li>
+                    {{/foreach}}
                 </ul>
             </div>
             {{if $productconfig.is_active=="Y"&&$productconfig.category_count>1}}
@@ -147,11 +153,9 @@
             <div class="boxs">
                 <span class="return-fir"><p>{{$serviceconfig.name}}</p></span>
                 <ul>
-                    <li><a href="/service/digital">数字营销</a></li>
-                    <li><a href="/service/ad">营销大数据</a></li>
-                    <li><a href="/service/light">数字全案</a></li>
-                    <li><a href="/service/society">社会化营销</a></li>
-                    <li><a href="/service/medium">媒介资源</a></li>
+                    {{foreach from=$serviceconfig.category item=rs}}
+                    <li><a href="/service/{{$rs.markcode}}">{{$rs.name}}</a></li>
+                    {{/foreach}}
                 </ul>
             </div>
             {{if $newsconfig.is_active=="Y"&&$newsconfig.category_count>1}}
@@ -166,7 +170,17 @@
             {{/if}}
         </div>
     </div>
-    
+    {{if $submenu_count > 0}}
+    <div class="ins-nav">
+        <div class="w1520">
+            <ul>
+                {{foreach from=$submenu item=rs}}
+                <li  {{if $submenu_code==$rs.markcode}}class="hover"{{/if}}><a href="/{{$menumodule}}/{{$rs.markcode}}">{{$rs.name}}</a><i></i></li>
+                {{/foreach}}
+            </ul>
+        </div>
+    </div>
+    {{/if}}
     
     
     <div class="body-wrap">

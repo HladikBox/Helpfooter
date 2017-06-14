@@ -2,12 +2,4 @@ RewriteEngine on
 
 RewriteRule ^((?:static).*|favicon.ico|favicon.png) $1 [NC,L]
 
-RewriteRule casesite casesite.php [NC,L]
-RewriteRule preview preview.php [NC,L]
-RewriteRule theme theme.php [NC,L]
-RewriteRule price price.php [NC,L]
-RewriteRule design design.php [NC,L]
-RewriteRule news news.php [NC,L]
-RewriteRule artical artical.php [NC,L]
-
-RewriteRule ^.*$ index.php [NC,L]
+RewriteRule ^.*$ redirect.php 
