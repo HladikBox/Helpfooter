@@ -1,0 +1,89 @@
+{{include  file="$smarty_root/header.html" }}
+
+		{{if $productbanner.id!=""}}
+		<div class="ins-ban website-ban">
+
+              <img class="bgimg" src="{{$uploadpath}}product/{{$productbanner.pic}}" alt="{{$productbanner.name}}">
+                        <div class="up-cont">
+              <h4>{{$productbanner.name}}</h4>
+              <p class="s-tit"></p>
+              <span class="line"></span>
+              <span class="font">Recommended case</span>
+              <div class="link-box f-cb">
+                <a href="/product?id={{$productbanner.id}}" target="_blank">
+                    + Details
+                </a>
+                                <a href="{{$productbanner.itswebsite}}" target="_blank">
+                    Visit
+                </a>
+                            </div>
+            <span class="down-ico"><i></i></span>
+        </div>
+            <div class="loader"></div>
+        </div>
+        {{/if}}
+
+<div class="website-wrap w1520 public-list" id="public-list">
+    <div class="main-wrap">
+        <div class="top-nav">
+            <h3>我们的成果</h3>
+            <!--
+            <div class="s-nav f-cb">
+                <span class="fl stt">筛选:</span>
+                <ul>
+                    <li class='hover'><a href="http://www.bocweb.cn/interact/website.html?in=topnav">全部</a></li>
+                    <li><a href="http://www.bocweb.cn/interact/website/13.html?in=topnav">品牌官网</a></li>
+                    <li><a href="http://www.bocweb.cn/interact/website/14.html?in=topnav">大企业集团</a></li>
+                    <li><a href="http://www.bocweb.cn/interact/website/18.html?in=topnav">服饰珠宝</a></li>
+                    <li><a href="http://www.bocweb.cn/interact/website/41.html?in=topnav">家电</a></li>
+                    <li><a href="http://www.bocweb.cn/interact/website/20.html?in=topnav">家居房产</a></li>
+                    <li><a href="http://www.bocweb.cn/interact/website/19.html?in=topnav">金融保险</a></li>
+
+                </ul>
+            </div>
+            -->
+        </div>
+        <div class="list-wrap i-wrap">
+            <ul>
+            	{{foreach from=$productlist item=rs}}
+                <li>
+                    <a class="img-box" href="/product?id={{$rs.id}}">
+                        <img class="bgimg" width="100%" src="/static/web/img/bg_10.png?v=v3" alt="">
+                        <img class="up-pic" src="{{$uploadpath}}product/{{$rs.thumbnail}}" alt="{{$rs.name}}">
+                        <div class="up-graybox">
+                            <span class="bgbox"></span>
+                            <p class="stit">
+                                <span class="line linet"></span>
+                                查看项目
+                                <span class="line lineb"></span>
+                            </p>
+                            <span class="out-ico"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="25px" height="26px" viewBox="0 0 25 26" enable-background="new 0 0 25 26" xml:space="preserve"><path fill="#FFFFFF" d="M18.277,21.863H4.34V8.417l4.341-0.062V4.219H0V26h22.619V15.659h-4.342V21.863z M11.98,0l4.34,4.136  l-6.512,6.205l4.34,4.138l6.511-6.206L25,12.409V0H11.98z" /></svg></span>
+                        </div>
+                    </a>
+                    <div class="cont-box">
+                        <p class="stit"><a href="/product?id={{$rs.id}}">{{$rs.name}}</a></p>
+                        <div class="lab-font">
+                            <span>{{$rs.summary}}</span> 
+                        </div>
+                        <a class="bot-link f-cb" href="/product?id={{$rs.id}}">
+                            <span class="fl link-detail">Details</span>
+                            <span class="fr point"></span>
+                        </a>
+                    </div>
+                </li>
+                {{/foreach}}
+            </ul>
+        </div>
+        <!--<div class="load-more" id="loadmore">Load More</div>-->
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+{{include  file="$smarty_root/footer.html" }}

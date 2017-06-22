@@ -19,6 +19,10 @@ public function _list($search_param,$orderby){
     {
         $sql_where.=" and r_main.name like '%".$search_param["name"]."%'";
     }
+    if(isset($search_param["markcode"]))
+    {
+        $sql_where.=" and r_main.markcode like '%".$search_param["markcode"]."%'";
+    }
     if(isset($search_param["summary"]))
     {
         $sql_where.=" and r_main.summary like '%".$search_param["summary"]."%'";

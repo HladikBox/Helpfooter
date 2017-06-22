@@ -8,6 +8,8 @@ if($ckk[1]=="about"){
 	include "about.php";
 }elseif($ckk[1]=="service"){
 	include "service.php";
+}elseif($ckk[1]=="product"){
+	include "product.php";
 }else{
 	die("error");
 }
