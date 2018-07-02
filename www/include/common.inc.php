@@ -15,6 +15,7 @@ define('ROOT', str_replace("\\", '/', substr(dirname(__FILE__), 0, -8)));	// -9 
 unset($HTTP_ENV_VARS, $HTTP_POST_VARS, $HTTP_GET_VARS, $HTTP_POST_FILES, $HTTP_COOKIE_VARS);
 
 
+error_reporting(1);
 
 //~ session start
 session_start();
