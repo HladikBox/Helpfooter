@@ -23,67 +23,64 @@ session_start();
 
 require ROOT.'/config.inc.php';
 include ROOT.'/classes/mgr/smarty.cls.php';
+
 include ROOT.'/core/common.inc.php';
+
+include ROOT.'/model/website.php';
+$website=$_SESSION["website"];
+if(empty($website)){
+    $website=new WebsiteMgr($dbmgr);
+    $website=$website->config(0);
+    $arr[]=$website;
+    //$arr=htmlDecodeList($arr,array("name"=>"name".$lang,"shortname"=>"shortname".$lang,"contact"=>"contact".$lang,"footer"=>"footer".$lang));
+    //$website=$arr[0];
+	if($CONFIG["debug"]==false){
+		$_SESSION["website"]=$website;
+	}
+}	
+
+$smarty->assign("website",$website);
+$smarty->assign("seo_title",$website["seo_title"]);
+$smarty->assign("seo_keywords",$website["seo_keywords"]);
+$smarty->assign("seo_description",$website["seo_description"]);
 
 $smarty->assign("uploadpath",$CONFIG["upload"]);
 
-include ROOT.'/model/setting.php';
-$settingMgr=new SettingMgr($dbmgr);
-$setting=$settingMgr->get(0);
-$smarty->assign("setting",$setting);
 
-
-
-include ROOT.'/model/aboutconfig.php';
-$aboutconfigMgr=new AboutconfigMgr($dbmgr);
-$aboutconfig=$aboutconfigMgr->get(0);
-	include ROOT.'/model/about.php';
-	$aboutMgr=new AboutMgr($dbmgr);
-	$about=$aboutMgr->_list(array("status"=>"A")," order by seq");
-	$aboutconfig["category"]=$about;
-	$aboutconfig["category_count"]=count($about);
-$smarty->assign("aboutconfig",$aboutconfig);
-
-
-include ROOT.'/model/serviceconfig.php';
-$serviceconfigMgr=new ServiceconfigMgr($dbmgr);
-$serviceconfig=$serviceconfigMgr->get(0);
-	include ROOT.'/model/service.php';
-	$serviceMgr=new ServiceMgr($dbmgr);
-	$service=$serviceMgr->_list(array("status"=>"A")," order by seq");
-	$serviceconfig["category"]=$service;
-	$serviceconfig["category_count"]=count($service);
-$smarty->assign("serviceconfig",$serviceconfig);
-
-
-include ROOT.'/model/newsconfig.php';
-$newsconfigMgr=new NewsconfigMgr($dbmgr);
-$newsconfig=$newsconfigMgr->get(0);
-if($newsconfig["is_active"]=="Y"){
-	include ROOT.'/model/newscategory.php';
-	$newscategoryMgr=new NewscategoryMgr($dbmgr);
-	$newscategory=$newscategoryMgr->_list(array("status"=>"A")," order by seq");
-	$newsconfig["category"]=$newscategory;
-	$newsconfig["category_count"]=count($newscategory);
+function htmlDecodeList($list,$arr){
+    
+    for($i=0;$i<count($list);$i++){
+        foreach($arr as $k=>$v){
+            $list[$i][$k]=htmlspecialchars_decode($list[$i][$v]);
+        }
+    }
+    return $list;
 }
-$smarty->assign("newsconfig",$newsconfig);
 
-include ROOT.'/model/productconfig.php';
-$productconfigMgr=new ProductconfigMgr($dbmgr);
-$productconfig=$productconfigMgr->get(0);
-if($productconfig["is_active"]=="Y"){
-	include ROOT.'/model/productcategory.php';
-	$productcategoryMgr=new ProductcategoryMgr($dbmgr);
-	$productcategory=$productcategoryMgr->_list(array("status"=>"A")," order by seq");
-	$productconfig["category"]=$productcategory;
-	$productconfig["category_count"]=count($productcategory);
+function htmlDecode($rs,$arr){
+    
+    foreach($arr as $k=>$v){
+      $rs[$k]=htmlspecialchars_decode($rs[$v]);
+    }
+    return $rs;
 }
-$smarty->assign("productconfig",$productconfig);
+
+function makeArrayIndex($arr,$code,$value){
+    $ret=array();
+    foreach($arr as $k=>$v){
+       $ret[$v[$code]]=$v[$value];
+    }
+    return $ret;
+}
 
 
-include ROOT.'/model/address.php';
-$addressMgr=new AddressMgr($dbmgr);
-$address=$addressMgr->_list( array('status' =>'A' )," order by seq");
-$smarty->assign("address",$address);
+function setLeftNav($title,$list){
+    Global $smarty;
+    $smarty->assign("leftnavtitle",$title);
+    $smarty->assign("leftnavcount",count($list));
+    $smarty->assign("leftnav",$list);
+}
+
+
 
 ?>

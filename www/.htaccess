@@ -1,5 +1,0 @@
-RewriteEngine on
-
-RewriteRule ^((?:static).*|favicon.ico|favicon.png) $1 [NC,L]
-
-RewriteRule ^.*$ redirect.php 

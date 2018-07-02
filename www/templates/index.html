@@ -1,391 +1,320 @@
-{{include  file="$smarty_root/header.html" }}
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8" />
+	<title>{{$website.name}}-{{$seo_title}}</title>
+    <meta name="keywords" content="{{$seo_keywords}}" />
+    <meta name="description" content="{{$seo_description}}" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <link href="/templets/Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="icon" href="{{$uploadpath}}website/{{$website.fav}}" type="image/x-icon" />
+    
+    <link href="/templets/Content/index.min.css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+    <script src="/templets/Scripts/html5shiv.min.js"></script>
+    <![endif]-->
+    <script src="/templets/Scripts/jquery.min.js"></script>
+    <script src="/templets/Scripts/index.min.js"></script>
+</head>
 
-        <div class="i-ban banner">
-            <ul>
-                {{foreach from=$indexbanner item=rs}}
-                <li class='video' style="background: url({{$uploadpath}}banner/{{$rs.pic}}) no-repeat center;" data-img="{{$uploadpath}}banner/{{$rs.pic}}">
-                    {{if $rs.mp4!=""}}
-                    <span class="gray-bg"></span>
-                    <video class="video-sign" id="i-ban-video" loop="" preload="load" muted="muted" src="{{$uploadpath}}indexbanner/{{$rs.mp4}}"></video>
-                    {{/if}}
-                    <div class="cent-cont">
-                        <div class="word">
-                            {{foreach from=$rs.content item=rss}}
-                            <p>
-                                <span class="font-sign"> {{$rss}} </span>
-                            </p>
-                            {{/foreach}}
-                            <span class="link"><span class="bg"></span><i></i></span>
-                        </div>
-                    </div>
-                </li>
-                {{/foreach}}
-            </ul>
-            <div class="btns"></div>
-            <div class="loader"></div>
+<body id="body">
+    <header id="header">
+        <div class="logo">
+          <img src="{{$uploadpath}}website/{{$website.logo}}" alt="{{$website.name}}" class="img-responsive" />
         </div>
-
-        <div class="i-m-ban">
-            <ul class="swiper-wrapper">
-                {{foreach from=$indexbanner item=rs}}
-                <li class="swiper-slide" style="background: url({{$uploadpath}}banner/{{$rs.pic}}) no-repeat center;" data-img="{{$uploadpath}}banner/{{$rs.pic}}">
-                    <div class="cent-cont">
-                        <div class="word">
-                            {{foreach from=$rs.content item=rss}}
-                            <p>
-                                <span class="font-sign"> {{$rss}} </span>
-                            </p>
-                            {{/foreach}}
-                            <span class="link"><span class="bg"></span><i></i></span>
-                        </div>
-                    </div>
-                </li>
-                {{/foreach}}
-            </ul>
-            <div class="page-btns"></div>
+        <strong class="words">{{$website.slogen}}</strong>
+        <nav class="menu">
+          <ul class="list-inline">
+            <li class="active"><a>首页</a></li>
+            <li><a>业务</a></li>
+            <li><a href="/fangan/">方案</a></li>
+            <li><a href="/cases/">案例</a></li>
+            <li><a>优势</a></li>
+			<li><a>流程</a></li>
+            <li><a>关于</a></li>
+            <li><a>联系</a></li>
+          </ul>
+        </nav>
+        <div class="hotline">
+          <a href="tel:{{$website.contact}}" title="免费咨询热线"><span>{{$website.contact}}</span></a><u></u>
         </div>
-
-        <div class="w1520">
-            <div class="i-fir-wrap i-wrap f-cb mginb-16">
-                <div class="fr right-wrap">
-                    <div class="about-recom">
-                        <div class="cont">
-                            <p class="stit">{{$aboutconfig.title}}</p>
-                            <span class="font"> <p>{{$aboutconfig.summary}}</p> </span>
-                            <a class="bot-link f-cb" href="/about" target="_blank">
-                                <span class="fl">About us</span>
-                                <span class="fr point"></span>
-                            </a>
-                        </div>
-                    </div>
-                    <a class="img-box" href="/about">
-                        <img src="{{$uploadpath}}serviceconfig/{{$serviceconfig.image}}" alt="{{$serviceconfig.name}}">
-                        <div class="up-graybox">
-                            <span class="bgbox"></span>
-                            <p class="stit">
-                                <span class="line linet"></span>
-                                查看更多
-                                <span class="line lineb"></span>
-                            </p>
-                            <span class="out-ico"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="25px" height="26px" viewBox="0 0 25 26" enable-background="new 0 0 25 26" xml:space="preserve"><path fill="#FFFFFF" d="M18.277,21.863H4.34V8.417l4.341-0.062V4.219H0V26h22.619V15.659h-4.342V21.863z M11.98,0l4.34,4.136  l-6.512,6.205l4.34,4.138l6.511-6.206L25,12.409V0H11.98z" /></svg></span>
-                        </div>
-                    </a>
+        <div class="menu-icon">
+  			<a href="tel:{{$website.contact}}" title="点击直拨制作热线"><span class="glyphicon glyphicon-earphone"></span></a>
+            <span class="glyphicon glyphicon-th-large"></span>
+        </div>
+    </header>
+    <div class="welcome"><p><u>Loading . . .</u></p></div>
+    
+    <section class="video">
+    	<div class="swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide nth1">
+                <div class="box">
+                  <div class="left"></div>
+                  <div class="right">
+                	<span>年专注，APP应用开发</span><i></i>
+                    <p>始于2012年 展望未来<br />专注于用户体验，专业于解决方案</p>
+                  </div>
                 </div>
-                <div class="fl left-wrap">
-                    <div class="cent-cont i-column-wrap black">
-                        <p class="stit"><a href="/service">{{$serviceconfig.name}}</a></p>
-                        <span class="line"></span>
-                        <p><span class="mtit"><a>{{$serviceconfig.title}}</a></span> <span class="font"><a>{{$serviceconfig.summary}}</a></span></p>						<a class="link" href="/service"><span class="bg"></span><i></i></a>
-                    </div>
-                    <div class="num-box">
-                        <span class="num">
-                            <!-- <img src="/static/web/img/ico_33_h.png?v=v3" alt=""> -->
-                            <p>Service</p>
-                        </span>
-                    </div>
+              </div>
+              <div class="swiper-slide nth2">
+              	<div class="box">
+                	<span>设计控，也醉了</span><i></i>
+                    <p>不是非要高大上，只是醉心于设计<br />我们想，再上一个好案例</p>
                 </div>
+              </div>
+              <div class="swiper-slide nth3">
+              	<div class="box">
+                  <div class="top">技术派，论研发</div>
+                  <div class="mid"></div>
+                  <div class="bottom">我说，业界没有最好的技术，只有最棒的技术开发者<br />定制研发，为您的客户和团队</div>
+                </div>
+              </div>
+              <div class="swiper-slide nth4">
+              	<div class="box">
+                  <div class="top"><span>先入为主，布局未来</span><i></i></div>
+                  <div class="bottom">全面布局<u>PC</u>端与<u>移动</u>端<br />抢占头等商机<br />基于<u>Html5</u>响应式布局，智能识别多种终端设备</div>
+                </div>
+              </div>
             </div>
-            <div class="i-sec-wrap i-wrap f-cb mginb-16">
-                <a class="fl img-box" href="{{$page.ad1_link}}">
-                    <img src="{{$uploadpath}}indexpage/{{$page.ad1_pic}}" >
-                    <div class="up-graybox">
-                        <span class="bgbox"></span>
-                        <p class="stit">
-                            <span class="line linet"></span>
-                            查看更多
-                            <span class="line lineb"></span>
-                        </p>
-                        <span class="out-ico"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="25px" height="26px" viewBox="0 0 25 26" enable-background="new 0 0 25 26" xml:space="preserve"><path fill="#FFFFFF" d="M18.277,21.863H4.34V8.417l4.341-0.062V4.219H0V26h22.619V15.659h-4.342V21.863z M11.98,0l4.34,4.136  l-6.512,6.205l4.34,4.138l6.511-6.206L25,12.409V0H11.98z" /></svg></span>
-                    </div>
-                </a>
-                <div class="fr right-cont i-column-wrap white">
-                    <p class="stit"><a href="{{$page.ad1_link}}">{{$page.ad1_name}}</a></p>
-                    <span class="line"></span>
-                    <p class="mtit"><a>{{$page.ad_title}}</a></p><p><span class="font">{{$page.ad1_summary}}</span></p>					<a class="link" href="{{$page.ad1_link}}"><span class="bg"></span><i></i></a>
-                </div>
-            </div>
-            {{if $productconfig.is_active=="Y"}}
-            <div class="i-thi-wrap i-wrap mginb-16">
-                <div class="main-wrap">
-                    <div class="tit-box">
-                        <h4>{{$productconfig.name}}</h4>
-                        <p class="intr">{{$productconfig.title}}</p>
-                    </div>
-                    {{if $productconfig.category_count>1}}
-                    <div class="nav-box f-cb">
-                        <div class="fl left-link">
-                            <span class="all">ALL</span>
-                            {{foreach from=$productconfig.category item=rs}}
-                            <a class="type-link"  href="/product/{{$rs.markcode}}" target="_blank">{{$rs.name}}</a>
-                            {{/foreach}}
-                        </div>
-                        <a class="fr more" href="/product" target="_blank">Read more</a>
-                    </div>
-                    {{/if}}
-                    <div class="list-wrap">
-                        <div class="pc-scroll">
-                            <ul>
-                                {{foreach from=$product item=rs}}
-                                <li>
-                                    <a class="img" href="/product/{{$rs.id}}">
-                                        <img class="bgimg" width="100%" src="/static/web/img/bg_02.png?v=v3" alt="">
-                                        <img class="up-pic" src="{{$uploadpath}}product/{{$rs.thumbnail}}" alt="{{$rs.name}}">
-                                        <div class="up-graybox">
-                                            <span class="bgbox"></span>
-                                            <p class="stit">
-                                                <span class="line linet"></span>
-                                                查看项目
-                                                <span class="line lineb"></span>
-                                            </p>
-                                            <span class="out-ico"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="25px" height="26px" viewBox="0 0 25 26" enable-background="new 0 0 25 26" xml:space="preserve"><path fill="#FFFFFF" d="M18.277,21.863H4.34V8.417l4.341-0.062V4.219H0V26h22.619V15.659h-4.342V21.863z M11.98,0l4.34,4.136  l-6.512,6.205l4.34,4.138l6.511-6.206L25,12.409V0H11.98z" /></svg></span>
-                                        </div>
-                                    </a>
-                                    <div class="cont-wrap">
-                                        <p class="tit"><a href="/product/{{$rs.id}}">{{$rs.name}}</a></p>
-                                        <span class="intr">
-                                            {{$rs.summary}}
-                                        </span>
-                                        <a class="bot-link f-cb" href="/product/{{$rs.id}}">
-                                            <span class="fl stt">Details</span>
-                                            <span class="fr point"></span>
-                                        </a>
-                                    </div>
-                                </li>
-                                {{/foreach}}
-                            </ul>
-                        </div>
-                        <div class="mobile-scroll">
-                            <ul class="swiper-wrapper">
-                                {{foreach from=$product item=rs}}
-                                <li class="swiper-slide">
-                                    <a class="img" href="/product/{{$rs.id}}">
-                                        <img class="bgimg" width="100%" src="/static/web/img/bg_02.png?v=v3" alt="">
-                                        <img class="up-pic" src="{{$uploadpath}}product/{{$rs.thumbnail}}" alt="{{$rs.name}}">
-                                    </a>
-                                    <div class="cont-wrap">
-                                        <p class="tit"><a href=/product/{{$rs.id}}">{{$rs.name}}</a></p>
-                                        <span class="intr">
-                                            {{$productconfig.name}} /	{{$rs.category_id_name}}
-                                        </span>
-                                        <a class="bot-link f-cb" href="/product/{{$rs.id}}">
-                                            <span class="fl stt">Details</span>
-                                            <span class="fr point"></span>
-                                        </a>
-                                    </div>
-                                </li>
-                                {{/foreach}}
-                            </ul>
-                            <div class="pagination"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{/if}}
-            <div class="i-fou-wrap i-wrap f-cb mginb-16">
-                <a class="fr img-box" href="{{$page.ad2_link}}">
-
-                    <img src="{{$uploadpath}}indexpage/{{$page.ad2_pic}}" alt="{{$page.ad2_name}}">
-
-                    <div class="up-graybox">
-                        <span class="bgbox"></span>
-                        <p class="stit">
-                            <span class="line linet"></span>
-                            查看更多
-                            <span class="line lineb"></span>
-                        </p>
-                        <span class="out-ico"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="25px" height="26px" viewBox="0 0 25 26" enable-background="new 0 0 25 26" xml:space="preserve"><path fill="#FFFFFF" d="M18.277,21.863H4.34V8.417l4.341-0.062V4.219H0V26h22.619V15.659h-4.342V21.863z M11.98,0l4.34,4.136  l-6.512,6.205l4.34,4.138l6.511-6.206L25,12.409V0H11.98z" /></svg></span>
-                    </div>
-                </a>
-                <div class="fl cont-wrap i-column-wrap white">
-                    <p class="stit"><a href="{{$page.ad2_link}}">{{$page.ad2_name}}</a></p>
-                    <span class="line"></span>
-                    <p class="mtit"><a>{{$page.ad2_title}}</a></p><p><span class="font">{{$page.ad2_summary}}</span></p>					<a class="link" href="{{$page.ad2_link}}"><span class="bg"></span><i></i></a>
-                </div>
-            </div>
-            <div class="i-fiv-wrap i-wrap mginb-16">
+        </div>
+        <div class="innerBox">
+        	<div class="news">
+            	<span>NEWS :</span>
+                <a href="/a/news/" title="更多文章动态" class="more" target="_blank">more</a>
                 <ul>
-                    <li>
-                        <a class="img" href="{{$page.ad3_link}}">
-                            <img class="bgimg" width="100%" src="/static/web/img/bg_01.png?v=v3" alt="">
-                            <img class="up-pic" src="{{$uploadpath}}indexpage/{{$page.ad3_pic}}" alt="{{$page.ad3_name}}">
-                            <!-- <video class="up-pic video-lab" id="hudong-video" loop="" muted="muted" src="/static/m/video/互动开发_clip.mp4?v=v3"></video> -->
-                            <div class="up-graybox">
-                                <span class="bgbox"></span>
-                                <p class="stit">
-                                    <span class="line linet"></span>
-                                    查看更多
-                                    <span class="line lineb"></span>
-                                </p>
-                                <span class="out-ico"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="25px" height="26px" viewBox="0 0 25 26" enable-background="new 0 0 25 26" xml:space="preserve"><path fill="#FFFFFF" d="M18.277,21.863H4.34V8.417l4.341-0.062V4.219H0V26h22.619V15.659h-4.342V21.863z M11.98,0l4.34,4.136  l-6.512,6.205l4.34,4.138l6.511-6.206L25,12.409V0H11.98z" /></svg></span>
-                            </div>
-                        </a>
-                        <div class="cont-wrap">
-                            <div class="cont">
-                                <p class="tit"><a href="{{$page.ad3_link}}">{{$page.ad3_name}}</a></p>
-                                <span class="intr">
-                                    <a href="javascript:;"> <p>{{$page.ad3_title}}</p> </a>
-                                </span>
-                                <div class="bot-link f-cb">
-                                    <div class="fl link">
-                                        {{$page.ad3_summary}}
-                                    </div>
-                                    <a class="fr point" href="{{$page.ad3_link}}"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <a class="img" href="{{$page.ad4_link}}">
-                            <img class="bgimg" width="100%" src="/static/web/img/bg_01.png?v=v3" alt="">
-                            <img class="up-pic" src="{{$uploadpath}}indexpage/{{$page.ad4_pic}}" alt="{{$page.ad4_name}}">
+                   <li><a href="/news/experience/2017/1025/68.html" target="_blank" title="共享停车位APP定制开发怎么变现？">共享停车位APP定制开发怎么变现？...</a></li>
+<li><a href="/news/experience/2017/1025/70.html" target="_blank" title="快递APP开发最常见的几个错误设计">快递APP开发最常见的几个错误设计...</a></li>
+<li><a href="/news/experience/2017/1025/69.html" target="_blank" title="健身APP开发都有哪些核心功能？">健身APP开发都有哪些核心功能？...</a></li>
+<li><a href="/news/experience/2017/1025/67.html" target="_blank" title="共享珠宝首饰APP开发报价和周期">共享珠宝首饰APP开发报价和周期...</a></li>
 
-                            <div class="up-graybox">
-                                <span class="bgbox"></span>
-                                <p class="stit">
-                                    <span class="line linet"></span>
-                                    查看更多
-                                    <span class="line lineb"></span>
-                                </p>
-                                <span class="out-ico"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="25px" height="26px" viewBox="0 0 25 26" enable-background="new 0 0 25 26" xml:space="preserve"><path fill="#FFFFFF" d="M18.277,21.863H4.34V8.417l4.341-0.062V4.219H0V26h22.619V15.659h-4.342V21.863z M11.98,0l4.34,4.136  l-6.512,6.205l4.34,4.138l6.511-6.206L25,12.409V0H11.98z" /></svg></span>
-                            </div>
-                        </a>
-                        <div class="cont-wrap">
-                            <div class="cont">
-                                <p class="tit"><a href="{{$page.ad4_link}}">{{$page.ad4_name}}</a></p>
-                                <span class="intr">
-                                    <a href="{{$page.ad4_link}}"> <p>{{$page.ad4_title}}</p> </a>
-                                </span>
-                                <div class="bot-link f-cb">
-                                    <div class="fl link">
-                                        {{$page.ad4_summary}}
-                                    </div>
-                                    <a class="fr point" href="{{$page.ad4_link}}"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
                 </ul>
             </div>
-            <div class="i-sex-wrap i-wrap f-cb mginb-16">
-                <a class="fl img-box" href="{{$page.ad5_link}}">
-                    <img src="{{$uploadpath}}indexpage/{{$page.ad5_pic}}" alt="{{$page.ad5_name}}">
-
-                    <div class="up-graybox">
-                        <span class="bgbox"></span>
-                        <p class="stit">
-                            <span class="line linet"></span>
-                            查看更多
-                            <span class="line lineb"></span>
-                        </p>
-                        <span class="out-ico"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="25px" height="26px" viewBox="0 0 25 26" enable-background="new 0 0 25 26" xml:space="preserve"><path fill="#FFFFFF" d="M18.277,21.863H4.34V8.417l4.341-0.062V4.219H0V26h22.619V15.659h-4.342V21.863z M11.98,0l4.34,4.136  l-6.512,6.205l4.34,4.138l6.511-6.206L25,12.409V0H11.98z" /></svg></span>
-                    </div>
-                </a>
-                <div class="fr cont-wrap i-column-wrap white">
-                    <p class="stit"><a href="{{$page.ad5_link}}">{{$page.ad5_name}}</a></p>
-                    <span class="line"></span>
-                    <p class="mtit"><a>{{$page.ad5_title}}</a></p><p><span class="font">{{$page.ad5_summary}}</span></p>					<a class="link" href="{{$page.ad5_link}}"><span class="bg"></span><i></i></a>
-                </div>
-            </div>
-            {{if $newsconfig.is_active=="Y"}}
-            <div class="i-sev-wrap i-wrap">
-                <div class="main-wrap">
-                    <div class="top-titbox f-cb">
-                        <div class="fl">
-                            <h4>{{$newsconfig.name}}</h4>
-                            <span class="line"></span>
-                            <span class="font">{{$newsconfig.summary}}</span>
-                        </div>
-                        <a class="fr more" href="/news" target="_blank">Read more</a>
-                    </div>
-                    <div class="list-wrap news-recommend-list pc-scroll fadeIntop">
-                        <ul>
-                            {{foreach from=$news item=rs}}
-                            <li>
-                                <a class="img" href="/news/{{$rs.id}}" target="_blank">
-                                    <img class="bgimg" src="/static/web/img/bg_03.png?v=v3" alt="">
-                                    <img class="up-pic" src="{{$uploadpath}}news/{{$rs.thumbnail}}" alt="{{$rs.title}}">
-                                    <span class="up-gray"></span>
-                                </a>
-                                <div class="cont-wrap">
-                                    <div class="cont">
-                                        <p class="tit"><a href="/news/{{$rs.id}}" target="_blank">{{$rs.title}}</a></p>
-                                        <span class="word"><a href="/news/{{$rs.id}}" target="_blank">{{$rs.summary}}</a></span>
-                                        <a class="bot-link f-cb" href="/news/{{$rs.id}}" target="_blank">
-                                            <span class="fl more">Read more</span>
-                                            <span class="fr link-point"></span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                            {{/foreach}}
-                        </ul>
-                    </div>
-                    <div class="list-wrap news-recommend-list m-scroll">
-                        <ul class="swiper-wrapper">
-                            {{foreach from=$news item=rs}}
-                            <li class="swiper-slide">
-                                <a class="img" href="/news/{{$rs.id}}">
-                                    <img class="bgimg" src="/static/web/img/bg_03.png?v=v3" alt="">
-                                    <img class="up-pic" src="{{$uploadpath}}news/{{$rs.thumbnail}}" alt="{{$rs.title}}">
-                                    <span class="up-gray"></span>
-                                </a>
-                                <div class="cont-wrap">
-                                    <div class="cont">
-                                        <p class="tit"><a href="/news/{{$rs.id}}">{{$rs.title}}</a></p>
-                                        <span class="word"><a href="/news/{{$rs.id}}">{{$rs.summary}}</a></span>
-                                        <a class="bot-link f-cb" href="/news/{{$rs.id}}">
-                                            <span class="fl more">Read more</span>
-                                            <span class="fr link-point"></span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                            {{/foreach}}
-                        </ul>
-                        <div class="pagination"></div>
-                    </div>
-                </div>
-            </div>
-            {{/if}}
-            <!-- index.js也要改
-            <div class="i-eig-wrap i-wrap">
-                <div class="main-wrap">
-                    <div class="tit-box f-cb">
-                        <div class="fl">
-                            <p class="tit">媒介资源</p>
-                            <span class="intr">优质数字媒介资源，涵盖各行各业</span>
-                        </div>
-                        <a class="fr more" href="http://www.bocweb.cn/digital/medium.html" target="_blank">Read more</a>
-                    </div>
-                    <div class="list-wrap">
-                        <ul>
-                            <li>
-                                <img src="http://www.bocweb.cn/upload/2017/01/18/148472222759230flrg.jpg" alt="Baidu百度">
-                            </li>
-                            <li>
-                                <img src="http://www.bocweb.cn/upload/2017/02/08/1486517717695crk6f.jpg" alt="淘宝网">
-                            </li>
-                            <li>
-                                <img src="http://www.bocweb.cn/upload/2017/02/08/1486517755411719q6t.jpg" alt="腾讯网">
-                            </li>
-                            <li>
-                                <img src="http://www.bocweb.cn/upload/2017/03/03/14885312152698hr6ug.jpg" alt="今日头条">
-                            </li>
-                            <li>
-                                <img src="http://www.bocweb.cn/upload/2017/02/08/14865176867448jd573.jpg" alt="小米网">
-                            </li>
-                            <li>
-                                <img src="http://www.bocweb.cn/upload/2017/03/03/14885311394442lrud5.jpg" alt="网易新闻">
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            -->
+            <div class="guide"></div>
+            <a class="movedown"></a>
         </div>
+    </section>
+    
+    <section class="business">
+      <div class="box">
+        <div class="caption">
+        	<i></i><span>我们能做什么</span>
+            <br class="clear" />
+        </div>
+        <ul class="items list-inline">
+        	<li class="app">
+            	<i></i><strong>APP应用开发</strong>
+                <p>高端APP定制开发服务<br />打造移动端品牌</p>
+            </li>
+            <li class="pc">
+            	<i></i><strong>物联网技术研究</strong>
+                <p>工程技术应用站/ 新农村物联网<br />布局物联时代</p>
+            </li>
+            <li class="sys">
+            	<i></i><strong>业务系统研发</strong>
+                <p>提供ERP/CRM/OA等系统研发<br />让业务办公轻松自如</p>
+            </li>
+            <li class="host">
+            	<i></i><strong>微信开发服务</strong>
+                <p>微信公众号开发/小程序应用制作<br />抢夺微信端流量</p>
+            </li>
+            <li class="mobi">
+            	<i></i><strong>高端网站定制</strong>
+                <p>为企业提供高端网站建设<br />打造互联网品牌门面</p>
+            </li>
+        </ul>
+      </div>
+    </section>
+    
+    <section class="cases">
+      <div class="box">
+    	<div class="caption">
+        	<i></i><span>解决方案</span>
+            <br class="clear" />
+        </div>
+        <div class="swiper-container items">
+           <div class="swiper-wrapper">
+                 <div class="swiper-slide">
+                    <a href="/fangan/56.html" target="_blank">
+                    <img src="/uploads/171017/1-1G01GH4035I.jpg" alt="直播电商APP开发解决方案" />
+                    <p>解决方案<br /><strong>直播电商APP开发解决方案</strong><br />直播电商AP开发,直播APP开发</p></a>
+                  </div>
+<div class="swiper-slide">
+                    <a href="/fangan/55.html" target="_blank">
+                    <img src="/uploads/allimg/171017/1-1G01G636443P.jpg" alt="一元夺宝APP开发" />
+                    <p>解决方案<br /><strong>一元夺宝APP开发</strong><br />云购系统开发</p></a>
+                  </div>
+<div class="swiper-slide">
+                    <a href="/fangan/54.html" target="_blank">
+                    <img src="/uploads/171017/1-1G01G6063A38.jpg" alt="分销商城系统开发解决方" />
+                    <p>解决方案<br /><strong>分销商城系统开发解决方</strong><br /></p></a>
+                  </div>
+
+           </div>
+        </div>
+        <a href="/fangan/" title="欣赏更多app开发解决方案" class="more" target="_blank">MORE</a>
+      </div>
+    </section>
+    
+    <section class="clients">
+   	  <div class="box">
+    	<div class="caption">
+        	<i></i><span>他们与紫鲸物流长期合作</span>
+            <br class="clear" />
+        </div>
+        <ul class="items list-inline">
+        	<li class="cctv"><span>CCTV影响力视频网站建设</span></li>
+            <li class="unicom"><span>中国联通电信卡网站制作</span></li>
+            <li class="tsinghua"><span>清华大学国际预科学院网站建设</span></li>
+            <li class="cas"><span>中科院力学研究所网站设计</span></li>
+            <li class="sipo"><span>国家知识产权局网站建设</span></li>
+            <li class="apple"><span>中航苹果官方网站设计</span></li>
+            <li class="das"><span>一汽大众汽车门户网站建设</span></li>
+            <li class="hunantv"><span>湖南卫视全媒体网站建设</span></li>
+            <li class="sino"><span>中环球船务官方网站制作</span></li>
+            <li class="report"><span>中国报道信息门户网站建设</span></li>
+            <li class="gedu"><span>环球雅思教育门户网站制作</span></li>
+            <li class="bgg"><span>京粮集团网站建设</span></li>
+            <li class="bsec"><span>北赛电工官方网站设计</span></li>
+            <li class="huadan"><span>华丹乳业官方网站建设</span></li>
+            <li class="zd"><span>中东集团网站制作</span></li>
+        </ul>
+      </div>
+    </section>
+    
+   <section class="quality">
+      <div class="box">
+    	<div class="caption">
+        	<i></i><span>不同媒介，同样精彩</span>
+            <br class="clear" />
+        </div>
+        <div class="swiper-container items">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide nth1">
+                <ul class="list-inline">
+                  <li class="mobi"><span>响应式手机网站建设</span></li><li class="pad"><span>响应式平板网站建设</span></li><li class="pc"><span>响应式PC网站建设</span></li>
+                </ul>
+                <p>触及视觉灵魂的设计趋势<br />精心布局的用户体验<br />毫无顾忌地通过任何终端<br />呈现在客户的眼前</p>
+              </div>
+              <div class="swiper-slide nth2">
+              	<ul class="list-inline">
+                  <li class="ie"><span>兼容微软IE浏览器的网页设计</span></li><li class="chrome"><span>兼容谷歌Chrome浏览器的网站设计</span></li><li class="firefox"><span>兼容火狐Firefox浏览器的网页设计</span></li><li class="safari"><span>兼容苹果Safari浏览器的网站设计</span></li>
+                </ul>
+                <p>Html5 + CSS3 响应式布局<br />卓越的浏览器兼容性<br />因为高端，所以出众</p>
+              </div>
+              <div class="swiper-slide nth3">
+              	<ul class="list-inline">
+                  <li class="windows"><span>windows平台网站制作</span></li><li class="ios"><span>苹果APP开发</span></li><li class="andriod"><span>安卓app开发</span></li>
+                </ul>
+                <p>专业技术团队<br />项目质量把控<br />让APP开发更简单</p>
+              </div>
+            </div>
+        </div>
+    
+      </div>
+    </section>
+    
+    <section class="marketing">
+      <div class="box">
+        <div class="caption">
+        	<i></i><span>APP开发流程</span>
+            <br class="clear" />
+        </div>
+        <ul class="items list-inline">
+        	<li class="se">
+            	<i></i><strong>商务阶段</strong>
+                <p>签订合同<br />需求分析</p>
+            </li>
+            <li class="weixin">
+            	<i></i><strong>产品阶段</strong>
+                <p>原型图确认<br />UI设计</p>
+            </li>
+            <li class="weibo">
+            	<i></i><strong>代码开发阶段</strong>
+                <p>功能确认<br />分组开发</p>
+            </li>
+            <li class="sms">
+            	<i></i><strong>测试阶段</strong>
+                <p>测试计划<br />bug修复</p>
+            </li>
+            <li class="pay">
+            	<i></i><strong>交付阶段</strong>
+                <p>部署上线<br />交付源码</p>
+            </li>
+            <li class="bbs">
+            	<i></i><strong>售后阶段</strong>
+                <p>技术维护<br />产品迭代建议</p>
+            </li>
+        </ul>
+      </div>
+    </section>
+    
+    <section class="aboutus">
+    	<ul class="menu"><li>思想</li><li>关于</li><li>荣誉</li></ul>
+        <div class="swiper-container items">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide nth1">
+                <strong>厚积薄发</strong>
+                <p>登上峰顶，不是为了饱览风光，是为了寻找更高的山峰<br />日出东方，告别了昨天的荣耀，将光芒照向更远的地方<br />一路上，我们更在意如何积累和沉淀</p>
+                <u>下一秒，让你看，我们到底有多强</u>
+              </div>
+              <div class="swiper-slide nth2">
+              	<strong>海富特</strong>
+                <p>深圳海富特资讯管理有限公司成立于2013年，是华南地区领先的智能物联技术研发服务商，我司拥有一批资深硬件工程师及嵌入式系统设计工程师，具备多年无线通讯技术开发经验积累。</p>
+                <p>目前拥有丰富的GPS,GPRS/3G/4G/NB-Iot, WIFI，蓝牙，433M, MTK平台等相关案例；同时也致力于为客户提供完整的物联网解决方案。</p>
+              </div>
+              <div class="swiper-slide nth3">
+              	<strong>紫鲸团队历程</strong>
+                <ul>
+                  <li>2012年<u>-</u>成立深圳粉果科技有限公司</li>
+                  <li>2013年<u>-</u>获得天使投资</li>
+                  <li>2014年<u>-</u>成立广州紫鲸互联网科技有限公司</li>
+                  <li>2016年<u>-</u>成立深圳{{$website.name}}科技有限公司</li>
+                  <li>2017年<u>-</u>成立领科技术孵化中心</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <!--<table class="exp">
+        	<tr>
+              <td><u>600+</u>企业客户信赖之选</td>
+              <td><u></u>上市/集团企业设计作品</td>
+              <td><u>2010</u>年度金牌设计企业</td>
+              <td><u>12</u>项国家软件著作权</td>
+              <td><u>96%</u>以上的客户续费率</td>
+            </tr>
+        </table>-->
+    </section>
+    
+    <section class="contact">
+    	<div class="box">
+        	<div class="above">
+            	<div class="wechat"><img src="{{$uploadpath}}website/{{$website.wechatlogo}}" alt="扫描关注{{$website.name}}微信公众账号" /></div>
+                <div class="left">
+                	<a href="tel:{{$website.contact}}" title="网站制作咨询热线" class="tel"></a>
+                    <p>{{$website.address}}<br />联系电话：{{$website.contact}}<br />Copyright 2017-2020<u></u>{{$website.companyname}} 版权所有<br />{{$website.beian}}<br /></p>
+                </div>
+            
+            </div>
+        </div>
+    </section>
+    <div class="dock">
+        <ul class="icons">
+        	<li class="up"><i></i></li>
+            <li class="tel">
+            	<i></i><p>APP开发站咨询热线<br />{{$website.contact}}</p>
+            </li>
+            <li class="im">
+            	<i></i><p><a href="http://wpa.qq.com/msgrd?v=3&uin={{$website.qq}}&site=qq&menu=yes" target="_blank">点我，建站咨询</a></p>
+            </li>
+            <li class="wechat">
+            	<i></i><p><img src="{{$uploadpath}}website/{{$website.wechatlogo}}" alt="扫描关注app开发微信公众账号" /></p>
+            </li>
+            <li class="down"><i></i></li>
+        </ul>
+        <a class="switch"></a>
+    </div>
 
 
-
-{{include  file="$smarty_root/footer.html" }}
-
-<script src="/static/web/js/index.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
