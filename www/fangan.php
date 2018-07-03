@@ -31,15 +31,16 @@ if($id==0){
                 $next=$fangan[$i+1];
             }
         }
-        $smarty->assign("prev",$prev);
-        $smarty->assign("next",$next);
-        $smarty->assign("info",$info);
-        $smarty->display(ROOT."/templates/fangan_detail.html");
     }
     if($info==null){
         $smarty->assign("fangan",$fangan);
         $smarty->display(ROOT."/templates/fangan.html");
-    }
+    }else{
+        $smarty->assign("prev",$prev);
+        $smarty->assign("next",$next);
+        $smarty->assign("info",$info);
+        $smarty->display(ROOT."/templates/fangan_detail.html");
+	}
 }
 
 

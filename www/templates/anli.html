@@ -2,7 +2,7 @@
 <html lang="zh-cn">
 <head>
 	<meta charset="UTF-8" />
-	<title>解决方案_{{$website.name}}</title>
+	<title>经典案例_{{$website.name}}</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
@@ -28,9 +28,8 @@
         <nav>
           <ul>
             <li><a href="/">网站首页</a></li>
-            <li class='active'><a href='/fangan.php' style='color:white;'>解决方案</a></li>
-            <li><a href="/anli.php">经典案例</a></li>
-            
+            <li><a href='/fangan.php'>解决方案</a></li>
+            <li class='active'><a href="/anli.php"  style='color:white;'>经典案例</a></li>
             <li><a href="/news.php">文章动态</a></li>
             
           </ul>
@@ -41,24 +40,28 @@
 		<h3>{{$website.contact}} </h3>
     </footer>
 </header>
-    
     <section class="toolbar">
-    	<a href="/" title="返回首页" class="homelink"><span class="glyphicon glyphicon-chevron-left"></span></a>
-    	<span class="switch glyphicon glyphicon-th-list"></span>
+        <a href="/" title="返回首页" class="homelink"><span class="glyphicon glyphicon-chevron-left"></span></a>
+        <span class="switch glyphicon glyphicon-th-list"></span>
         <div class="category btn-group">
-             <a href="/fangan.php" class="btn btn-default btn-primary">全部</a>
-              
-        </div>	
+            <a href="/anli.php" class="btn btn-default {{if $cat_id==0}}btn-primary{{/if}}">全部</a>
+            {{foreach from=$catlist item=rs}}
+            <a href="/anli.php?cat_id={{$rs.id}}" class="btn btn-default {{if $cat_id==$rs.id}}btn-primary{{/if}}">{{$rs.name}}</a>
+            {{/foreach}}
+        </div>
     </section>
-    
+
     <section class="caselist content">
         <ul class="items list-inline">
-            {{foreach from=$fangan item=rs}}
-           <li style="background:white;">
-              <a href="/fangan.php?id={{$rs.id}}" target="_blank">
-              <img src="{{$uploadpath}}fangan/{{$rs.cover}}" alt="{{$rs.name}}}" style="width:300px;height:177px;" />
-              <p>解决方案<br /><strong>{{$rs.name}}</strong><br />{{$rs.summary}}</p></a>
-            </li>
+            {{foreach from=$anli item=rs}}
+            {{if $cat_id==0||$cat_id==$rs.cat_id}}
+            <li>
+                <a href="/anli.php?id={{$rs.id}}" target="_blank">
+                    <img src="{{$uploadpath}}fangan/{{$rs.cover}}" alt="{{$rs.name}}"  style="width:300px;height:177px;" />
+                    <p>项目案例<br /><strong>{{$rs.name}}</strong><br /></p>
+                </a>
+            </li>            
+            {{/if}}
             {{/foreach}}
         </ul>
     </section>

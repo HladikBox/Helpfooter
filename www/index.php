@@ -1,7 +1,7 @@
 <?php
 include 'include/common.inc.php';
-
 include ROOT.'/model/fangan.php';
+
 $fanganinindex=$_SESSION["fanganinindex"];
 if(empty($fanganinindex)){
     $fanganinindex=new FanganMgr($dbmgr);

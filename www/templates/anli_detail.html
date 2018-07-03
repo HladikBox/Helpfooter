@@ -2,9 +2,9 @@
 <html lang="zh-cn">
 <head>
 	<meta charset="UTF-8" />
-	<title>解决方案_{{$website.name}}</title>
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
+	<title>{{$info.name}}_{{$website.name}}</title>
+    <meta name="keywords" content="{{$info.name}}" />
+    <meta name="description" content="{{$info.summary}}" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
     
     <link href="/templets/Content/bootstrap.min.css" rel="stylesheet" />
@@ -28,8 +28,8 @@
         <nav>
           <ul>
             <li><a href="/">网站首页</a></li>
-            <li class='active'><a href='/fangan.php' style='color:white;'>解决方案</a></li>
-            <li><a href="/anli.php">经典案例</a></li>
+            <li><a href='/fangan.php'>解决方案</a></li>
+            <li class='active'><a href="/anli.php"  style='color:white;'>经典案例</a></li>
             
             <li><a href="/news.php">文章动态</a></li>
             
@@ -41,27 +41,43 @@
 		<h3>{{$website.contact}} </h3>
     </footer>
 </header>
-    
-    <section class="toolbar">
+<section class="toolbar">
     	<a href="/" title="返回首页" class="homelink"><span class="glyphicon glyphicon-chevron-left"></span></a>
     	<span class="switch glyphicon glyphicon-th-list"></span>
-        <div class="category btn-group">
-             <a href="/fangan.php" class="btn btn-default btn-primary">全部</a>
-              
-        </div>	
+        <div class="btnList">
+            <div class="link btn-group ml">
+        	    <a href="/anli.php" class="btn btn-default" title="APP开发作品集">作品集</a>
+            </div>
+            {{if $prev!=null}}
+            <div class="link btn-group">
+        	    <a href="/anli.php?id={{$prev.id}}" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span>PREV</a>
+            </div>
+            {{/if}}
+            {{if $next!=null}}
+            <div class="link btn-group">
+        	    <a href="/anli.php?id={{$next.id}}" class="btn btn-default">NEXT<span class="glyphicon glyphicon-arrow-right"></span></a>
+            </div>
+            {{/if}}
+        </div>
     </section>
     
-    <section class="caselist content">
-        <ul class="items list-inline">
-            {{foreach from=$fangan item=rs}}
-           <li style="background:white;">
-              <a href="/fangan.php?id={{$rs.id}}" target="_blank">
-              <img src="{{$uploadpath}}fangan/{{$rs.cover}}" alt="{{$rs.name}}}" style="width:300px;height:177px;" />
-              <p>解决方案<br /><strong>{{$rs.name}}</strong><br />{{$rs.summary}}</p></a>
-            </li>
-            {{/foreach}}
-        </ul>
+    <section class="caseshow content">
+        
+        <div class="caption">项目介绍</div>
+        <div class="words">
+        	<h1>[ {{$info.name}} ]</h1>
+        	<span class="rel">项目案例<u>•</u><a href="/anli.php?cat_id={{$info.cat_id}}" target="_blank" title="项目案例">{{$info.cat_id_name}}</a></span>
+            
+            <dl class="tags">
+              <dt>{{$info.summary}}<span class="glyphicon glyphicon-tag"></span></dt>
+            </dl>
+        </div>
+        <div class="caption">方案欣赏</div>
+        <div class="demo">
+        	 {{$info.content}}
+        </div>
     </section>
+
     
     <div class="dock">
         <ul class="icons">
