@@ -11,10 +11,11 @@ function encode($str)
 }
 function parameter_filter($param,$htmlchange=true)
 {
+	Global $dbmgr;
 	$arr=array("'"=>"''");
       $param = trim($param);
 	$param = strtr($param,$arr);
-	$param = mysql_escape_string($param);
+	$param = mysqli_escape_string($dbmgr->conn,$param);
       if($htmlchange){
          $param = htmlspecialchars($param);
       }

@@ -53,6 +53,7 @@ function htmlDecodeList($list,$arr){
     for($i=0;$i<count($list);$i++){
         foreach($arr as $k=>$v){
             $list[$i][$k]=htmlspecialchars_decode($list[$i][$v]);
+            $list[$i][$k]=str_replace("/alucard263096/helpfooter","http://cmsdev.app-link.org/alucard263096/helpfooter",$list[$i][$k]);
         }
     }
     return $list;

@@ -27,7 +27,7 @@
           <ul class="list-inline">
             <li class="active"><a>首页</a></li>
             <li><a>业务</a></li>
-            <li><a href="/fangan/">方案</a></li>
+            <li><a href="/fangan.php">方案</a></li>
             <li><a href="/cases/">案例</a></li>
             <li><a>优势</a></li>
 			<li><a>流程</a></li>
@@ -134,25 +134,16 @@
         </div>
         <div class="swiper-container items">
            <div class="swiper-wrapper">
+                {{foreach from=$fanganinindex item=rs}}
                  <div class="swiper-slide">
-                    <a href="/fangan/56.html" target="_blank">
-                    <img src="/uploads/171017/1-1G01GH4035I.jpg" alt="直播电商APP开发解决方案" />
-                    <p>解决方案<br /><strong>直播电商APP开发解决方案</strong><br />直播电商AP开发,直播APP开发</p></a>
+                    <a href="/fangan.php?id={{$rs.id}}" target="_blank">
+                    <img src="{{$uploadpath}}fangan/{{$rs.cover}}" alt="{{$rs.name}}" />
+                    <p>解决方案<br /><strong>{{$rs.name}}</strong><br />{{$rs.summary}}</p></a>
                   </div>
-<div class="swiper-slide">
-                    <a href="/fangan/55.html" target="_blank">
-                    <img src="/uploads/allimg/171017/1-1G01G636443P.jpg" alt="一元夺宝APP开发" />
-                    <p>解决方案<br /><strong>一元夺宝APP开发</strong><br />云购系统开发</p></a>
-                  </div>
-<div class="swiper-slide">
-                    <a href="/fangan/54.html" target="_blank">
-                    <img src="/uploads/171017/1-1G01G6063A38.jpg" alt="分销商城系统开发解决方" />
-                    <p>解决方案<br /><strong>分销商城系统开发解决方</strong><br /></p></a>
-                  </div>
-
+                  {{/foreach}}
            </div>
         </div>
-        <a href="/fangan/" title="欣赏更多app开发解决方案" class="more" target="_blank">MORE</a>
+        <a href="/fangan.php" title="欣赏更多app开发解决方案" class="more" target="_blank">MORE</a>
       </div>
     </section>
     

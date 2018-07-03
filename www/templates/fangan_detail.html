@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8" />
+	<title>{{$info.name}}_{{$title}}}</title>
+    <meta name="keywords" content="{{$info.name}}" />
+    <meta name="description" content="{{$info.summary}}" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    
+    <link href="/templets/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="/templets/Content/inner.min.css" rel="stylesheet" />
+    <link rel="icon" href="{{$uploadpath}}website/{{$website.fav}}" type="image/x-icon" />
+    <!--[if lt IE 9]>
+    <script src="/templets/Scripts/html5shiv.min.js"></script>
+    <![endif]-->
+    <script src="/templets/Scripts/jquery.min.js"></script>
+    <script src="/templets/Scripts/bootstrap.min.js"></script>
+    <script src="/templets/Scripts/inner.min.js"></script>
+</head>
+
+<body>
+<header>
+    <div class="box">
+	    <a href="/" title="APP开发"><img src="{{$uploadpath}}website/{{$website.logo}}" alt="深圳APP开发" style="max-width: 100px;" /></a>
+        <div class="wechat">
+    	    <img src="{{$uploadpath}}website/{{$website.wechatlogo}}" alt="扫描关注APP开发微信公众账号" class="wechat" /><p>扫一扫微信二维码<i></i></p>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="/">网站首页</a></li>
+            <li class='active'><a href='/fangan.php' style='color:white;'>解决方案</a></li>
+            <li><a href="/cases.php">经典案例</a></li>
+            
+            <li><a href="/news.php">文章动态</a></li>
+            
+          </ul>
+        </nav>
+    </div>
+    <footer>
+	    免费咨询热线<br />
+		<h3>{{$website.contact}} </h3>
+    </footer>
+</header>
+<section class="toolbar">
+    	<a href="/" title="返回首页" class="homelink"><span class="glyphicon glyphicon-chevron-left"></span></a>
+    	<span class="switch glyphicon glyphicon-th-list"></span>
+        <div class="btnList">
+            <div class="link btn-group ml">
+        	    <a href="/fangan.php" class="btn btn-default" title="APP开发作品集">作品集</a>
+            </div>
+            {{if $prev!=null}}
+            <div class="link btn-group">
+        	    <a href="/fangan.php?id={{$prev.id}}" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span>PREV</a>
+            </div>
+            {{/if}}
+            {{if $next!=null}}
+            <div class="link btn-group">
+        	    <a href="/fangan.php?id={{$next.id}}" class="btn btn-default">NEXT<span class="glyphicon glyphicon-arrow-right"></span></a>
+            </div>
+            {{/if}}
+        </div>
+    </section>
+    
+    <section class="caseshow content">
+        
+        <div class="caption">项目介绍</div>
+        <div class="words">
+        	<h1>[ {{$info.name}} ]</h1>
+        	<span class="rel">解决方案<u>•</u><a href="/fangan.php" target="_blank" title="解决方案">解决方案</a></span>
+            
+            <dl class="tags">
+              <dt>{{$info.summary}}<span class="glyphicon glyphicon-tag"></span></dt>
+            </dl>
+        </div>
+        <div class="caption">方案欣赏</div>
+        <div class="demo">
+        	 {{$info.content}}
+        </div>
+    </section>
+
+    
+    <div class="dock">
+        <ul class="icons">
+        	<li class="up"><i></i></li>
+            <li class="tel">
+            	<i></i><p>APP开发站咨询热线<br />{{$website.contact}}</p>
+            </li>
+            <li class="im">
+            	<i></i><p><a href="http://wpa.qq.com/msgrd?v=3&uin={{$website.qq}}&site=qq&menu=yes" target="_blank">点我，建站咨询</a></p>
+            </li>
+            <li class="wechat">
+            	<i></i><p><img src="{{$uploadpath}}website/{{$website.logo}}" alt="扫描关注app开发微信公众账号" /></p>
+            </li>
+            <li class="down"><i></i></li>
+        </ul>
+        <a class="switch"></a>
+    </div>
+
+</body>
+</html>
