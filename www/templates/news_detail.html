@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8" />
+	<title>{{$info.name}}_{{$website.name}}</title>
+    <meta name="keywords" content="{{$info.name}}" />
+    <meta name="description" content="{{$info.summary}}" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    
+    <link href="/templets/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="/templets/Content/inner.min.css" rel="stylesheet" />
+    <link rel="icon" href="{{$uploadpath}}website/{{$website.fav}}" type="image/x-icon" />
+    <!--[if lt IE 9]>
+    <script src="/templets/Scripts/html5shiv.min.js"></script>
+    <![endif]-->
+    <script src="/templets/Scripts/jquery.min.js"></script>
+    <script src="/templets/Scripts/bootstrap.min.js"></script>
+    <script src="/templets/Scripts/inner.min.js"></script>
+</head>
+
+<body>
+<header>
+    <div class="box">
+	    <a href="/" title="APP开发"><img src="{{$uploadpath}}website/{{$website.logo}}" alt="深圳APP开发" style="max-width: 100px;" /></a>
+        <div class="wechat">
+    	    <img src="{{$uploadpath}}website/{{$website.wechatlogo}}" alt="扫描关注APP开发微信公众账号" class="wechat" /><p>扫一扫微信二维码<i></i></p>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="/">网站首页</a></li>
+            <li><a href='/fangan.php'>解决方案</a></li>
+            <li><a href="/anli.php" >经典案例</a></li>
+            
+            <li class='active'><a href="/news.php" style='color:white;'>文章动态</a></li>
+            
+          </ul>
+        </nav>
+    </div>
+    <footer>
+	    免费咨询热线<br />
+		<h3>{{$website.contact}} </h3>
+    </footer>
+</header>
+<section class="toolbar">
+    	<a href="/" title="返回首页" class="homelink"><span class="glyphicon glyphicon-chevron-left"></span></a>
+    	<span class="switch glyphicon glyphicon-th-list"></span>
+        <div class="btnList">
+            <div class="link btn-group ml">
+        	    <a href="/news.php" class="btn btn-default" title="文章列表">文章列表</a>
+            </div>
+            {{if $prev!=null}}
+            <div class="link btn-group">
+        	    <a href="/news.php?id={{$prev.id}}" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span>PREV</a>
+            </div>
+            {{/if}}
+            {{if $next!=null}}
+            <div class="link btn-group">
+        	    <a href="/news.php?id={{$next.id}}" class="btn btn-default">NEXT<span class="glyphicon glyphicon-arrow-right"></span></a>
+            </div>
+            {{/if}}
+        </div>
+    </section>
+    
+    <section class="artshow content">
+            <div class="box">
+                <h1>{{$info.name}}</h1>
+                <span class="rel">
+                    {{$website.name}}<u>•</u>{{$info.published_date_formatting}}<u>•</u><a href="/news.php?cat_id={{$info.cat_id}}" target="_blank">{{$info.cat_id_name}}</a>
+                </span>
+                <div class="words">
+                    
+                        {{$info.content}}
+     
+                </div>
+                <dl class="tags">
+                  <dt>文章关键词<span class="glyphicon glyphicon-tag"></span></dt>
+                  
+                </dl>
+                <div class="bdsharebuttonbox">
+                    <a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+                </div>
+            </div>
+            <aside>
+                    <div class="ad"><a href="/" title="{{$website.seo_description}}" target="_blank"><img src="/templets/Picture/ad.jpg" alt="{{$website.seo_description}}" /></a></div>
+                    <div class="caption"><h3>推荐阅读</h3></div>
+                    <ul class="items">
+                        {{foreach from=$news item=rs}}
+                       <li>
+                          <a href="/news.php?id={{$rs.id}}" target="_blank" class="thumb"><img src="{{$uploadpath}}fangan/{{$rs.cover}}" /></a>
+                          <span class="title"><a href="/news.php?id={{$rs.id}}" target="_blank" title="{{$rs.name}}">{{$rs.name}} ...</a></span>
+                          <span class="rel">{{$rs.published_date_formatting}}<span class="glyphicon glyphicon-eye-open" title="浏览次数"></span>{{$rs.id+152}}</span>
+                        </li>
+                        {{/foreach}}
+                    </ul>
+                </aside>
+        
+        </section>
+    
+
+    
+    <div class="dock">
+        <ul class="icons">
+        	<li class="up"><i></i></li>
+            <li class="tel">
+            	<i></i><p>APP开发站咨询热线<br />{{$website.contact}}</p>
+            </li>
+            <li class="im">
+            	<i></i><p><a href="http://wpa.qq.com/msgrd?v=3&uin={{$website.qq}}&site=qq&menu=yes" target="_blank">点我，建站咨询</a></p>
+            </li>
+            <li class="wechat">
+            	<i></i><p><img src="{{$uploadpath}}website/{{$website.logo}}" alt="扫描关注app开发微信公众账号" /></p>
+            </li>
+            <li class="down"><i></i></li>
+        </ul>
+        <a class="switch"></a>
+    </div>
+
+</body>
+</html>

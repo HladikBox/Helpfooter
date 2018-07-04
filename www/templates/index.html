@@ -81,13 +81,11 @@
         <div class="innerBox">
         	<div class="news">
             	<span>NEWS :</span>
-                <a href="/a/news/" title="更多文章动态" class="more" target="_blank">more</a>
+                <a href="/news.php" title="更多文章动态" class="more" target="_blank">more</a>
                 <ul>
-                   <li><a href="/news/experience/2017/1025/68.html" target="_blank" title="共享停车位APP定制开发怎么变现？">共享停车位APP定制开发怎么变现？...</a></li>
-<li><a href="/news/experience/2017/1025/70.html" target="_blank" title="快递APP开发最常见的几个错误设计">快递APP开发最常见的几个错误设计...</a></li>
-<li><a href="/news/experience/2017/1025/69.html" target="_blank" title="健身APP开发都有哪些核心功能？">健身APP开发都有哪些核心功能？...</a></li>
-<li><a href="/news/experience/2017/1025/67.html" target="_blank" title="共享珠宝首饰APP开发报价和周期">共享珠宝首饰APP开发报价和周期...</a></li>
-
+                    {{foreach from=$newsinindex item=rs}}
+                   <li><a href="/news.php?id={{$rs.id}}" target="_blank" title="{{$rs.name}}">{{$rs.name}}...</a></li>
+                   {{/foreach}}
                 </ul>
             </div>
             <div class="guide"></div>

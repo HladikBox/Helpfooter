@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8" />
+	<title>文章动态_{{$website.name}}</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    
+    <link href="/templets/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="/templets/Content/inner.min.css" rel="stylesheet" />
+    <link rel="icon" href="{{$uploadpath}}website/{{$website.fav}}" type="image/x-icon" />
+    <!--[if lt IE 9]>
+    <script src="/templets/Scripts/html5shiv.min.js"></script>
+    <![endif]-->
+    <script src="/templets/Scripts/jquery.min.js"></script>
+    <script src="/templets/Scripts/bootstrap.min.js"></script>
+    <script src="/templets/Scripts/inner.min.js"></script>
+</head>
+
+<body>
+<header>
+    <div class="box">
+	    <a href="/" title="APP开发"><img src="{{$uploadpath}}website/{{$website.logo}}" alt="深圳APP开发" style="max-width: 100px;" /></a>
+        <div class="wechat">
+    	    <img src="{{$uploadpath}}website/{{$website.wechatlogo}}" alt="扫描关注APP开发微信公众账号" class="wechat" /><p>扫一扫微信二维码<i></i></p>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="/">网站首页</a></li>
+            <li><a href='/fangan.php'>解决方案</a></li>
+            <li ><a href="/anli.php" >经典案例</a></li>
+            <li class='active'  style='color:white;'><a href="/news.php">文章动态</a></li>
+            
+          </ul>
+        </nav>
+    </div>
+    <footer>
+	    免费咨询热线<br />
+		<h3>{{$website.contact}} </h3>
+    </footer>
+</header>
+    <section class="toolbar">
+        <a href="/" title="返回首页" class="homelink"><span class="glyphicon glyphicon-chevron-left"></span></a>
+        <span class="switch glyphicon glyphicon-th-list"></span>
+        <div class="category btn-group">
+            <a href="/news.php" class="btn btn-default {{if $cat_id==0}}btn-primary{{/if}}">全部</a>
+            {{foreach from=$catlist item=rs}}
+            <a href="/news.php?cat_id={{$rs.id}}" class="btn btn-default {{if $cat_id==$rs.id}}btn-primary{{/if}}">{{$rs.name}}</a>
+            {{/foreach}}
+        </div>
+    </section>
+
+    
+    <section class="artlist content">
+            <ul class="items">
+                {{foreach from=$news item=rs}}
+                {{if $cat_id==0||$cat_id==$rs.cat_id}}
+                <li>
+                  <p class="left">
+                    <span class="date">{{$rs.published_date_d}}<u>{{$rs.published_date_m}}</u></span>
+                    <a href="/news.php?id={{$rs.id}}" target="_blank" class="thumb"><img style="width:240px;height:160px;" src="{{$uploadpath}}fangan/{{$rs.cover}}" alt="{{$rs.name}}" /></a>
+                  </p>
+                  <p class="right">
+                    <span class="title"><a href="/news.php?id={{$rs.id}}" target="_blank">{{$rs.name}}</a></span>
+                    <span class="rel">{{$rs.published_date_formatting}}<u>•</u><a href='/news.php?cat_id={{$rs.cat_id}}'>{{$rs.cat_id_name}}</a></span>
+                    <span class="summary">{{$rs.summary}} . . .</span>
+                    <span class="tags">
+                        <span class="glyphicon glyphicon-tag"></span>
+                         
+                    </span>
+                  </p>
+                </li>
+                {{/if}}
+                {{/foreach}}
+            </ul>
+        </section>
+    
+    
+    <div class="dock">
+        <ul class="icons">
+        	<li class="up"><i></i></li>
+            <li class="tel">
+            	<i></i><p>APP开发站咨询热线<br />{{$website.contact}}</p>
+            </li>
+            <li class="im">
+            	<i></i><p><a href="http://wpa.qq.com/msgrd?v=3&uin={{$website.qq}}&site=qq&menu=yes" target="_blank">点我，建站咨询</a></p>
+            </li>
+            <li class="wechat">
+            	<i></i><p><img src="{{$uploadpath}}website/{{$website.logo}}" alt="扫描关注app开发微信公众账号" /></p>
+            </li>
+            <li class="down"><i></i></li>
+        </ul>
+        <a class="switch"></a>
+    </div>
+
+</body>
+</html>
