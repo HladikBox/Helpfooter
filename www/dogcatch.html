@@ -1,0 +1,135 @@
+<a id="count"></a>/<a id="totalcount"></a>
+<script src="https://cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script>
+<script>
+    var count=0;
+    var totalcount=0;
+
+    var masterdog=[];
+    $(document).ready(function(){
+        
+    var character=[1,2,3,4];   
+    var time=[1,2,3];
+    var period=[{"1":0,"2":0,"3":0},
+    {"1":0,"2":0,"3":1},
+    {"1":0,"2":1,"3":0},
+    {"1":0,"2":1,"3":1},
+    {"1":1,"2":0,"3":0},
+    {"1":1,"2":0,"3":1},
+    {"1":1,"2":1,"3":0},
+    {"1":1,"2":1,"3":1}];
+    var baby=[0,1,2];
+    var area=[1,2,3];
+    var sunshine=[1,2,3];
+    var budget=[1,2,3];
+    
+    
+    var masterlist=[];
+    for(var a=0;a<character.length;a++){
+        for(var b=0;b<time.length;b++){
+            for(var c=0;c<period.length;c++){
+            for(var d=0;d<baby.length;d++){
+            for(var e=0;e<area.length;e++){
+            for(var f=0;f<sunshine.length;f++){
+                
+            for(var g=0;g<budget.length;g++){
+               var master ={
+                   character:character[a],
+                   time:time[b],
+                   period:period[c],
+                   baby:baby[d],
+                   area:area[e],
+                   sunshine:sunshine[f],
+                   budget:budget[g]
+               };
+               masterlist.push(master);
+            }
+            }
+            }
+            }
+            }
+        }
+    }
+    
+    
+    var body_type=[1,2,3];
+    var hair=[1,2];
+    var lively=[1,2,3];
+    var kindly=[1,2,3];
+    var combat=[1,2,3,4];
+    
+    var doglist=[];
+    for(var a=0;a<body_type.length;a++){
+        for(var b=0;b<hair.length;b++){
+            for(var c=0;c<lively.length;c++){
+            for(var d=0;d<kindly.length;d++){
+            for(var e=0;e<combat.length;e++){
+                var dog ={
+                   body_type:body_type[a],
+                   hair:hair[b],
+                   lively:lively[c],
+                   kindly:kindly[d],
+                   combat:combat[e]
+               };
+               doglist.push(dog);
+            }
+            }
+            }
+        }
+    }
+    totalcount=masterlist.length*doglist.length;
+    $("#totalcount").text(totalcount);
+
+
+    for(var i=0;i<masterlist.length;i++){
+        for(var j=0;j<doglist.length;j++){
+            masterdog.push({master:masterlist[i],dog:doglist[j]});
+        }
+    }
+
+    catandupload();
+
+    });
+    
+    
+    function catandupload(){
+        var master=masterdog[count].master;
+        var dog=masterdog[count].dog;
+        var url="http://3g.ganji.com/pet/util.php?f=petDogRecommend&master="+JSON.stringify(master)+"&dog="+JSON.stringify( dog);
+        var p=master.period["1"].toString()+master.period["2"].toString()+master.period["3"].toString();
+        if(p!='000'){
+            //alert(p);
+        }
+        var json={
+            character:master.character,
+                   time:master.time,
+                   period:master.period["1"].toString()+master.period["2"].toString()+master.period["3"].toString(),
+                   baby:master.baby,
+                   area:master.area,
+                   sunshine:master.sunshine,
+                   budget:master.budget,
+                   body_type:dog.body_type,
+                   hair:dog.hair,
+                   lively:dog.lively,
+                   kindly:dog.kindly,
+                   combat:dog.combat,
+                   url:url,
+                   content:""
+        };
+        
+        $.post("http://cmsdev.app-link.org/alucard263096/petfind/api/test/dogcatch",json,function(res){
+            //alert(res);
+            count++;
+            if(count%1000==0){
+                //alert(count);
+                $("#count").text(count);
+            }
+            if(count==totalcount){
+                alert("done");
+            }
+            //$("#count").text(count);
+            catandupload();
+        });
+    }
+    
+    
+</script>
